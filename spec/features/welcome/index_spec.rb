@@ -23,9 +23,22 @@ RSpec.describe 'Welcome Page' do
     end
 
     it "Button to Log in" do
+      user = User.create(username: "funbucket13", password: "test")
+
+      fill_in :username, with: user.username
+      fill_in :password, with: user.password
+
+      #click_on "Log In"
+
+      #expect(current_path).to eq(root_path)
+
+      #expect(page).to have_content("Welcome, #{user.username}")
     end
 
-    it " Link to Registration" do
+    it "Link to Registration" do
+      expect(page).to have_link("New to Viewing Party? Register Here")
+      click_link('New to Viewing Party? Register Here')
+      #expect(current_path).to eq()
     end
   end
 end
