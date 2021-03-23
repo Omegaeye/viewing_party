@@ -14,7 +14,6 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - './*'
-    - 'morning-savannah-16693/db/schema.rb'
     - 'morning-savannah-16693/**/*'
 
 Style/FrozenStringLiteralComment:
