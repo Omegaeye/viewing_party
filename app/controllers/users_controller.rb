@@ -21,14 +21,14 @@ class UsersController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
     if user
-      authenticate
+      authenticate(user)
     else
       flash[:error] = 'Invalid username and password.'
       redirect_to root_path
     end
   end
 
-  def authenticate
+  def authenticate(user)
     if user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.username}!"
