@@ -1,0 +1,13 @@
+<h1>New User Registration</h1>
+
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.label :username, "Choose your desired username: " %>
+  <%= f.text_field :username, required: true %>
+  <%= f.label :email, "Email address: " %>
+  <%= f.text_field :email, required: true %>
+  <%= f.label :password, "Please enter password: " %>
+  <%= f.password_field :password, required: true %>
+  <%= f.label :password_confirmation, "Confirm Password: " %>
+  <%= f.password_field :password_confirmation , required: true %>
+  <%= f.submit "Register" %>
+<% end %>
