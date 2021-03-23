@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
+gem 'coffee-script-source', '1.8.0'
 
 group :development, :test do
   gem 'pry'
