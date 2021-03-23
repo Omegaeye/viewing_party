@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'as a visitor' do
   describe 'when I visit "/register"' do
     before :each do
-      visit(new_user_path)
+      visit(register_path)
     end
 
     it 'I see a form that asks me for some information' do
@@ -21,7 +21,7 @@ describe 'as a visitor' do
       click_button "Register"
 
       expect(page).to have_content("Account created successfully.")
-      expect(current_path).to eq(dashboard_index_path)
+      expect(current_path).to eq(dashboard_path)
     end
   end
 end
