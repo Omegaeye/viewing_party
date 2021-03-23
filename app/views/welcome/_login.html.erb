@@ -1,7 +1,7 @@
 <%= form_with model: @user, local:true do |form| %>
-  <%= form.label :username, "Username:" %>
-  <%= form.text_field :username, required:true %>
+  <%= form.label :username, "Username:"%>
+  <%= form.text_field :username, required:true, class: "form-control"%>
   <%= form.label :password, "Password:" %>
-  <%= form.text_field :password, required: true %>
+  <%= form.text_field :password, required: true, class: "form-control" %>
   <%= form.submit "Log In" %>
 <% end %>

@@ -1,7 +1,11 @@
-<h1>Welcome to Viewing Party</h1>
+<header><center>Welcome to Viewing Party<center></header>
 <div class="description">
-  <%= @intro %>
+<center>  <%= @intro %> </center>
 </div>
 
-<%= render partial: "login" %>
-<%= link_to 'New to Viewing Party? Register Here' %>
+<center>
+  <section class="login-form">
+    <%= render partial: "login" %>
+    <%= link_to 'New to Viewing Party? Register Here' %>
+  </section>
+</center>

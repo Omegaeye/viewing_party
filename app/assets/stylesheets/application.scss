@@ -28,3 +28,32 @@ footer {
   align-self: baseline;
   flex-direction: row;
 }
+
+header {
+  background-color: #5BCDF8;
+  color:white;
+  font-size: 50px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.login-form {
+  width: 500px;
+  border: 15px solid lightgrey;
+  padding: 50px;
+  margin: 20px;
+}
+
+.description {
+  width: 200;
+  border: 15px;
+  padding: 10px;
+  margin: 20px;
+
+}
