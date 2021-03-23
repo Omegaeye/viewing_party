@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
+gem 'coffee-script-source', '1.8.0'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'pry'
@@ -34,6 +36,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda-matchers'
   gem 'simplecov'
 end
 
