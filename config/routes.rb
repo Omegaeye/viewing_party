@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/dashboard', to: 'dashboard#index'
   resources :users, only: [:create]
-
+  resources :movies, only: [:index, :show]
+  resources :viewing_party, only: [:new, :create], :controller=>"parties"
 end
