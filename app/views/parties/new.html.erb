@@ -1,0 +1,14 @@
+<h1>Viewing Party Details</h1>
+<div class = "party-info">
+<%= form_with url: viewing_party_index_path, method: :post, local:true do |form| %>
+  <%= form.label :title, "Movie Title:"%>
+  <%= form.text_field :title, required:true, class: "form-control"%>
+  <%= form.label :duration, "Duration of Party:" %>
+  <%= form.number_field :duration, required: true, class: "form-control" %>
+  <%= form.label :date, "Day:" %>
+  <%= form.date_field :date, required: true, class: "form-control" %>
+  <%= form.label :time, "Start Time:" %>
+  <%= form.time_field :time, required: true, class: "form-control" %>
+  <%= form.submit "Create Party" %>
+<% end %>
+</div>
