@@ -13,7 +13,7 @@ RSpec.describe 'Welcome Page' do
       expect(page).to have_content("Welcome to Viewing Party")
     end
 
-    it "Brief description of the application" do
+    it "they should see a Brief description of the application" do
       paragraph = "Viewing party is an application to explore movies and create" +
       " a viewing party event for you and your friends to watch a movie together."
 
@@ -22,23 +22,53 @@ RSpec.describe 'Welcome Page' do
       end
     end
 
-    it "Button to Log in" do
-      user = User.create(username: "funbucket13", password: "test")
+    describe "they should see a Button to Log in" do
+      it "And they can login with a correct username and password" do
+        user = User.create!(username: "funbucket13", password: "test", email: 'funbucket13@gmail.com')
+        within '.login-form' do
+          fill_in :username, with: user.username
+          fill_in :password, with: user.password
 
-      fill_in :username, with: user.username
-      fill_in :password, with: user.password
+          click_on "Log In"
+        end
 
-      #click_on "Log In"
+        expect(current_path).to eq(dashboard_path)
 
-      #expect(current_path).to eq(root_path)
+        expect(page).to have_content("Welcome, #{user.username}")
+      end
+      
+      it "And they cannot login with a wrong passwrord" do
+        user = User.create!(username: "funbucket13", password: "test", email: 'funbucket13@gmail.com')
+        within '.login-form' do
+          fill_in :username, with: user.username
+          fill_in :password, with: "test123"
 
-      #expect(page).to have_content("Welcome, #{user.username}")
+          click_on "Log In"
+        end
+
+        expect(current_path).to eq(root_path)
+
+        expect(page).to have_content("Invalid password. Please try again.")
+      end
+
+      it "And they cannot login with a username and password that doesn't exist" do
+        within '.login-form' do
+          fill_in :username, with: "fake_user"
+          fill_in :password, with: "test"
+
+          click_on "Log In"
+        end
+
+        expect(current_path).to eq(root_path)
+
+        expect(page).to have_content("Invalid username and password.")
+      end
     end
 
     it "Link to Registration" do
       expect(page).to have_link("New to Viewing Party? Register Here")
       click_link('New to Viewing Party? Register Here')
-      #expect(current_path).to eq()
+      expect(current_path).to eq(register_path)
     end
   end
 end
