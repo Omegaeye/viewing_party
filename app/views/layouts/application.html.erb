@@ -6,6 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <<nav>
+      <%= if current_user %>
+        <%= "Logged in as: #{current_user.username}" %>
+        <%= link_to "Log Out", logout_path %>
+      <% end %>
+    </nav>>
   </head>
 
   <body>
