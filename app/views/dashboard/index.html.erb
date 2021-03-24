@@ -2,7 +2,7 @@
   Welcome <%= @user.username %>!
 </header>
 
-<%= button_to "Discover Movies"%>
+<%= button_to "Discover Movies", discover_path, method: :get%>
 
 <header>
   Friends:

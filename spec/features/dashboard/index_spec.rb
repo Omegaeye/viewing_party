@@ -4,7 +4,7 @@ describe 'As an authenticated user' do
   describe 'when I visit "/dashboard" I see' do
     before :each do
       @user = User.create(username: "sphinx", email: "123fake@email.com", password: "password")
-      visit dashboard_index_path
+      visit dashboard_path
     end
 
     it "'Welcome <username>!' at the top of page" do
@@ -13,6 +13,9 @@ describe 'As an authenticated user' do
 
     it "A button to Discover Movies" do
       expect(page).to have_button("Discover Movies")
+      click_button("Discover Movies")
+
+      expect(current_path).to eq(discover_path)
     end
 
     it "A friends section" do
