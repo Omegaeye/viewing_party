@@ -3,6 +3,5 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   has_many :friends, dependent: :destroy
   has_many :parties, foreign_key: :host_id, dependent: :destroy
-
   has_secure_password
 end

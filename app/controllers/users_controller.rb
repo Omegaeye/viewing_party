@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     new_params[:email] = user_params[:email].downcase
     new_params[:username] = user_params[:username].downcase
     user = User.create(new_params)
-    if user
+    if user.id
       flash[:success] = 'Account created successfully.'
       session[:user_id] = user.id
       redirect_to dashboard_path
