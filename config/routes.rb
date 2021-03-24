@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/register', to: 'users#new'
   post '/login', to: 'users#login'
+  post '/logout', to: 'users#logout'
   get '/dashboard', to: 'dashboard#index'
   resources :users, only: [:create]
 

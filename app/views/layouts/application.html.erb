@@ -9,7 +9,7 @@
     <nav>
       <%= if current_user %>
         <%= "Logged in as: #{current_user.username}" %>
-        <%= link_to "Log Out", logout_path %>
+        <%= link_to "Log Out", logout_path, method: :post %>
       <% end %>
     </nav>
     <meta name="viewport" content="width=device-width, initial-scale=1">
