@@ -1,0 +1,15 @@
+current directory: /Users/jennybranham/Documents/GitHub/Turing/3mod/projects/viewing_party/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.3/ext/bootsnap
+/Users/jennybranham/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20210324-92224-136tusx.rb extconf.rb
+creating Makefile
+
+current directory: /Users/jennybranham/Documents/GitHub/Turing/3mod/projects/viewing_party/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/jennybranham/Documents/GitHub/Turing/3mod/projects/viewing_party/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/jennybranham/Documents/GitHub/Turing/3mod/projects/viewing_party/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210324-92224-1fzcmou/bootsnap
