@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/register', to: 'users#new'
   post '/login', to: 'users#login'
-  resources :users, only: [:new, :create]
-  resources :dashboard, only: :index
-
+  get '/dashboard', to: 'dashboard#index'
+  resources :users, only: [:create]
+  resources :movies, only: [:index, :show]
+  resources :viewing_party, only: [:new, :create], :controller=>"parties"
 end

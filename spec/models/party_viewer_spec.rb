@@ -6,6 +6,6 @@ RSpec.describe PartyViewer, type: :model do
 
   describe 'relationships' do
     it { should belong_to :party }
-    it { should belong_to(:viewer).class_name('User').with_foreign_key('viewer_id') }
+    it { should belong_to(:viewer).class_name('User') }
   end
 end
