@@ -1,3 +1,5 @@
-class WelcoomeController < ApplicationController
-  def index; end
+class WelcomeController < ApplicationController
+  def index
+    @intro = helpers.intro
+  end
 end
