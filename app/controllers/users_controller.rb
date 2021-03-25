@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:alert] = 'One or more fields was taken or invalid.'
+      flash[:alert] = user.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -26,6 +26,11 @@ class UsersController < ApplicationController
       flash[:error] = 'Invalid username and password.'
       redirect_to root_path
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
   end
 
   def authenticate(user)

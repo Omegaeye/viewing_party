@@ -33,7 +33,7 @@ describe 'as a visitor' do
       fill_in "user[password_confirmation]", with: "password1"
       click_button "Register"
 
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Password confirmation doesn't match Password")
       expect(page).to have_content("New User Registration")
     end
 
@@ -46,7 +46,7 @@ describe 'as a visitor' do
       fill_in "user[password_confirmation]", with: "password"
       click_button "Register"
 
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Username has already been taken")
       expect(page).to have_content("New User Registration")
     end
 
@@ -59,7 +59,7 @@ describe 'as a visitor' do
       fill_in "user[password_confirmation]", with: "password"
       click_button "Register"
 
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Email has already been taken")
       expect(page).to have_content("New User Registration")
     end
 
@@ -68,7 +68,7 @@ describe 'as a visitor' do
       fill_in "user[password]", with: "password"
       fill_in "user[password_confirmation]", with: "password"
       click_button "Register"
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Username can't be blank")
       expect(page).to have_content("New User Registration")
     end
 
@@ -81,7 +81,7 @@ describe 'as a visitor' do
       fill_in "user[password_confirmation]", with: "password"
       click_button "Register"
 
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Email has already been taken")
       expect(page).to have_content("New User Registration")
     end
 
@@ -94,7 +94,7 @@ describe 'as a visitor' do
       fill_in "user[password_confirmation]", with: "password"
       click_button "Register"
 
-      expect(page).to have_content("One or more fields was taken or invalid.")
+      expect(page).to have_content("Username has already been taken")
       expect(page).to have_content("New User Registration")
     end
   end
