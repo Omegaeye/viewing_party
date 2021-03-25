@@ -1,0 +1,8 @@
+<header>
+  Top Rated Movies:
+</header>
+
+<% @movies.each do |movie| %>
+  <%= link_to movie.title, movie_path(movie) %><br>
+  <%= movie.vote_average %><br>
+<% end %>
