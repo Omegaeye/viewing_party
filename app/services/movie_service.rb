@@ -9,5 +9,7 @@ class MovieService
     json1[:results] + json2[:results]
   end
 
-  
+  def get_by_title
+    response = Faraday.get("https://api.themoviedb.org/3/movie/top_rated?api_key=62812900bf70170845400c81296d9581&language=en-US&page=1")
+  end
 end

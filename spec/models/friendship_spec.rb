@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Friend, type: :model do
+RSpec.describe Friendship, type: :model do
   describe 'validations' do
   end
 

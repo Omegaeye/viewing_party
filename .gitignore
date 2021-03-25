@@ -18,6 +18,9 @@
 
 # Ignore test coverage
 /coverage/*
+
+# Ignore application configuration
+/config/application.yml
 /vendor
 
 # Ignore application configuration
