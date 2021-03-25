@@ -14,7 +14,7 @@ class MovieApi
   end
 
   def movie_title
-    @movie_service.get_data[:results].map{|r| r[:title]}
+    @movie_service.get_top_rated.map{|r| r[:title]}
   end
 
 end
