@@ -20,6 +20,7 @@ gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
 gem 'coffee-script-source', '1.8.0'
 gem 'autoprefixer-rails'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry'
