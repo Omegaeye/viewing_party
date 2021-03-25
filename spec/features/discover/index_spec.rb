@@ -20,6 +20,7 @@ describe 'As an authenticated user' do
       it "I can see a text field to search by movie title with a button" do
         within ".title" do
           expect(page).to have_field(:movie_title)
+          fill_in :movie_title, with: 'the'
           expect(page).to have_button("Find Movies")
           click_button
           expect(current_path).to eq(movies_path)
