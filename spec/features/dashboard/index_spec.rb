@@ -3,7 +3,14 @@ require 'rails_helper'
 describe 'As an authenticated user' do
   describe 'when I visit "/dashboard" I see' do
     before :each do
-      @user = User.create(username: "sphinx", email: "123fake@email.com", password: "password")
+      @user = User.create!(username: "sphinx", email: "123fake@email.com", password: "password")
+      visit root_path
+      within '.login-form' do
+        fill_in :username, with: @user.username
+        fill_in :password, with: @user.password
+
+        click_on "Log In"
+      end
       visit dashboard_path
     end
 
