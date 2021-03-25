@@ -14,29 +14,28 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require_tree .
 
-const rmCheck = document.getElementById('remember_me'),
-usernameInput = document.getElementById('username');
-  if (localStorage.checkbox && localStorage.checkbox !== "")
-    {
-      rmCheck.setAttribute("checked", "checked");
-      usernameInput.value = localStorage.username;
-    }
-  else
-    {
-      rmCheck.removeAttribute("checked");
-      usernameInput.value = "";
-    }
+storage = window.localStorage
 
-function lsRememberMe() {
-  if (rmCheck.checked && usernameInput.value !=="")
-    {
-      localStorage.username = usernameInput.value;
-      localStorage.checkbox = rmCheck.value;
-    }
-  else
-    {
-      localStorage.username = "";
-      localStorage.checkbox = "";
-    }
+$(function() {
+if (storage.chkbx && storage.chkbx != '') {
+  $('#remember_me').attr('checked', 'checked');
+  $('#username').val(storage.usrname);
+} else {
+  $('#remember_me').removeAttr('checked');
+  $('#username').val('');
 }
+
+
+ $('#remember_me').click(function(){
+if ($('#remember_me').is(':checked')) {
+// save username and password
+  storage.usrname = $('#username').val();
+  storage.chkbx = $('#remember_me').val();
+} else {
+  storage.usrname = '';
+  storage.chkbx = '';
+    }
+  });
+});

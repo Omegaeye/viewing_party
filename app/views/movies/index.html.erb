@@ -1,0 +1,30 @@
+<%= render "shared/top_rated" %>
+<%= render "shared/find_movies" %>
+
+<header>
+  Top Rated Movies:
+</header>
+<section class="">
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table class="table table-striped table-borderless" id="movie">
+        <thead >
+            <th scope="col"><span class="text white_glow" style="position:absolute"><h2>Movie Title:</h2></span></th>
+            <th scope="col"><span class="text white_glow" style="position:absolute"><h2>Vote Average:</h2></span></th>
+        </thead>
+        <tbody>
+          <% @movies.each do |movie| %>
+          <tr>
+            <td>
+              <%= link_to movie.title, movie_path(movie) %><br>
+            </td>
+            <td>
+              <%= movie.vote_average %><br>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

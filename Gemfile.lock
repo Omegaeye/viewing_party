@@ -293,6 +293,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  faraday
   figaro
   jbuilder (~> 2.5)
   jquery-rails
@@ -316,4 +317,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   2.1.4
+   2.0.2
