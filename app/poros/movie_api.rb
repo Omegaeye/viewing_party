@@ -1,10 +1,11 @@
 class MovieApi
-  attr_reader :title,
+  attr_reader :id,
+              :title,
               :vote_average
 
   def initialize(data)
     # title, vote average, duration, genre, summary, cast, reviews
-    @movie_service = MovieService.new
+    @id = data[:id]
     @title = data[:title]
     @vote_average = data[:vote_average]
     # @duration = data[:duration]

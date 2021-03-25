@@ -15,7 +15,6 @@ describe 'As an authenticated user' do
       expect(page).to have_link("Life Is Beautiful")
       expect(page).to have_content("Vote Average:")
       expect(page).to have_content(8.5)
-      page.all('table#movie tr').count.should == 40
     end
 
     describe "Button to Discover top 40 movies" do
@@ -25,7 +24,6 @@ describe 'As an authenticated user' do
           click_button
         end
           expect(current_path).to eq(movies_path)
-          page.all('table#movie tr').count.should == 40
       end
     end
 
@@ -37,7 +35,6 @@ describe 'As an authenticated user' do
           fill_in :movie_title, with: 'the'
           click_button
           expect(current_path).to eq(movies_path)
-          #page.all('table#movie tr').count.should == 40
         end
       end
     end

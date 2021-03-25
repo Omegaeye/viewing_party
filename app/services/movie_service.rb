@@ -1,5 +1,5 @@
 class MovieService
-  def top_rated_movies
+  def self.top_rated_movies
     response = connection.get('movie/top_rated?&page=1')
     response2 = connection.get('movie/top_rated?&page=2')
 
@@ -8,15 +8,15 @@ class MovieService
     json1[:results] + json2[:results]
   end
 
-  def movies_by_title(movie_title)
+  def self.movies_by_title(movie_title)
     response = connection.get("search/movie?query=#{movie_title}")
 
-    JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)[:results]
   end
 
-  private
+  #private
 
-  def connection
+  def self.connection
     Faraday.new(url: 'https://api.themoviedb.org/3/', params: { api_key: ENV['movie_db_api_key'] })
   end
 end
