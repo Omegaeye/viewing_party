@@ -10,11 +10,14 @@ class MovieService
 
   def self.movies_by_title(movie_title)
     response = connection.get("search/movie?query=#{movie_title}")
-
     JSON.parse(response.body, symbolize_names: true)[:results]
   end
 
-  #private
+  def self.movie_by_id(id)
+    response = connection.get("movie/24428")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
 
   def self.connection
     Faraday.new(url: 'https://api.themoviedb.org/3/', params: { api_key: ENV['movie_db_api_key'] })

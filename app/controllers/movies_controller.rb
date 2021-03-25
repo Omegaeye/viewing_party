@@ -7,6 +7,8 @@ class MoviesController < ApplicationController
               end
   end
   def show
+    binding.pry
+    @movie = MovieFacade.find_movie_by_id(params[:id])
     # movie_service = MovieService.new
     # # data = movie_service.movie_by_id
     # # @movie =

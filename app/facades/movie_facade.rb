@@ -9,4 +9,7 @@ class MovieFacade
       MovieApi.new(data)
     end
   end
+  def self.find_movie_by_id(id)
+    MovieService.movie_by_id(id)
+  end
 end

@@ -16,6 +16,11 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Vote Average:")
       expect(page).to have_content(8.5)
     end
+    it "I can click on the movie link and it will take me to the movie show page" do
+      expect(page).to have_content("Life Is Beautiful")
+      #click_link "Life Is Beautiful"
+      #expect(current_path).to eq(movie_path())
+    end
 
     describe "Button to Discover top 40 movies" do
       it "When I click the top rated button, it takes me to the movie page" do
