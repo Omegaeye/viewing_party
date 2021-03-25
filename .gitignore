@@ -22,6 +22,3 @@
 # Ignore application configuration
 /config/application.yml
 /vendor
-
-# Ignore application configuration
-/config/application.yml
