@@ -7,7 +7,7 @@ RSpec.describe Party, type: :model do
 
   describe 'relationships' do
     it { should belong_to :movie }
-    it { should belong_to(:host).class_name('User').with_foreign_key('host_id') }
+    it { should belong_to(:host).class_name('User') }
     it { should have_many :party_viewers }
   end
 end
