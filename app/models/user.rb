@@ -5,4 +5,9 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, dependent: :destroy
   has_many :parties, foreign_key: :host_id, inverse_of: :host, dependent: :destroy
   has_secure_password
+
+  def invites
+    id = self.id
+    Party.joins(:party_viewers).where(party_viewers: {viewer_id: id})
+  end
 end
