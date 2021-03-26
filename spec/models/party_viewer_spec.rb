@@ -8,4 +8,8 @@ RSpec.describe PartyViewer, type: :model do
     it { should belong_to :party }
     it { should belong_to(:viewer).class_name('User') }
   end
+
+  describe "" do
+    
+  end
 end
