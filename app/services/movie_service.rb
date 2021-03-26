@@ -14,7 +14,17 @@ class MovieService
   end
 
   def self.movie_by_id(id)
-    response = connection.get("movie/24428")
+    response = connection.get("movie/#{id}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.cast(movie_id)
+    response = connection.get("movie/#{movie_id}/credits")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.reviews(movie_id)
+    response = connection.get("movie/#{movie_id}/reviews")
     JSON.parse(response.body, symbolize_names: true)
   end
 

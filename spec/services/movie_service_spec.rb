@@ -58,12 +58,40 @@ describe MovieService do
 
         expect(movie).to have_key :overview
         expect(movie[:overview]).to be_a(String)
-        #
-        # expect(movie).to have_key :cast
-        # expect(movie[:cast]).to be_a(Array)
+      end
+    end
+    context "#cast" do
+      it "returns movie cast based on an ID" do
+        credits = MovieService.cast(24428)
+        expect(credits).to be_a Hash
 
-        # expect(movie).to have_key :reviews
-        # expect(movie[:reviews]).to be_a(Array)
+        expect(credits).to have_key :cast
+        expect(credits[:cast]).to be_a(Array)
+
+        cast_member = credits[:cast].first
+        expect(cast_member).to be_a Hash
+        expect(cast_member).to have_key :name
+        expect(cast_member).to have_key :character
+      end
+    end
+    context "#reviews" do
+      it "returns movie reviews based on an ID" do
+        reviews = MovieService.reviews(24428)
+        expect(reviews).to be_a Hash
+
+        expect(reviews).to have_key :results
+        expect(reviews[:results]).to be_a(Array)
+        result1 = reviews[:results].first
+
+        expect(result1).to be_a Hash
+        expect(result1).to have_key :author
+        expect(result1).to have_key :author_details
+        expect(result1).to have_key :content
+
+        details = result1[:author_details]
+        expect(details).to be_a Hash
+        expect(details).to have_key :name
+        expect(details).to have_key :rating
       end
     end
   end

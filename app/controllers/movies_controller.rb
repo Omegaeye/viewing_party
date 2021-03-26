@@ -1,16 +1,17 @@
 class MoviesController < ApplicationController
   def index
     @movies = if params[:top_rated]
-                MovieFacade.top_rated_movies
+                MovieService.top_rated_movies.map do |data|
+                  MovieApi.new(data)
+                end
               else
-                MovieFacade.movies_by_title(params[:movie_title])
+                MovieService.movies_by_title(params[:movie_title]).map do |data|
+                  MovieApi.new(data)
+                end
               end
   end
   def show
-    binding.pry
-    @movie = MovieFacade.find_movie_by_id(params[:id])
-    # movie_service = MovieService.new
-    # # data = movie_service.movie_by_id
-    # # @movie =
+    data = MovieService.movie_by_id(params[:id])
+    @movie = MovieApi.new(data)
   end
 end
