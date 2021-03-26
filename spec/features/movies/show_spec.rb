@@ -23,7 +23,7 @@ describe 'As an authenticated user' do
         expect(page).to have_content(@movie.vote_average)
       end
       it "Runtime in hours & minutes" do
-        expect(page).to have_content(@movie.duration)
+        expect(page).to have_content("#{@movie.duration/60} hours " + "#{@movie.duration%60} minutes")
       end
       it "Genere(s) associated to movie" do
         genres = @movie.genres.map {|genre| genre[:name]} if @movie.genres
@@ -34,10 +34,11 @@ describe 'As an authenticated user' do
         expect(page).to have_content(@movie.overview)
       end
       it "List the first 10 cast members (characters&actress/actors)" do
-        expect(page).to have_content(@movie.cast.first)
+        expect(page).to have_content(@movie.cast.first[0])
+        expect(page).to have_content(@movie.cast.first[1])
       end
       it "Count of total reviews" do
-        expect(page).to have_content('19 Reviews')
+        expect(page).to have_content('19 Review(s)')
       end
       it "Each review's author and information" do
         review1 = @movie.reviews.first
@@ -45,7 +46,7 @@ describe 'As an authenticated user' do
         author_info = review1[1]
 
         #expect(page).to have_content(content)
-        #expect(page).to have_content(author_info[:name])
+        expect(page).to have_content(author_info[:username])
         #expect(page).to have_content(author_info[:rating])
       end
     end
