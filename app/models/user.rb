@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   def invites
     id = self.id
-    Party.joins(:party_viewers).where(party_viewers: {viewer_id: id})
+    Party.joins(:party_viewers).where(party_viewers: { viewer_id: id })
   end
 end
