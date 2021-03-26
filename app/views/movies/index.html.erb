@@ -1,16 +1,18 @@
-<%= render "shared/top_rated" %>
-<%= render "shared/find_movies" %>
+<section>
+  <%= render "shared/top_rated" %>
+  <%= render "shared/find_movies" %>
+</section><br><br>
 
 <header>
-  Top Rated Movies:
+  <center>Top Rated Movies:</center>
 </header>
 <section class="">
   <div id="table-wrapper">
     <div id="table-scroll">
       <table class="table table-striped table-borderless" id="movie">
         <thead >
-            <th scope="col"><span class="text white_glow" style="position:absolute"><h2>Movie Title:</h2></span></th>
-            <th scope="col"><span class="text white_glow" style="position:absolute"><h2>Vote Average:</h2></span></th>
+            <th scope="col"><span><h2>Movie Title:</h2></span></th>
+            <th scope="col"><span><h2>Vote Average:</h2></span></th>
         </thead>
         <tbody>
           <% @movies.each do |movie| %>
@@ -20,6 +22,9 @@
             </td>
             <td>
               <%= movie.vote_average %><br>
+            </td>
+            <td>
+              <img src="https://image.tmdb.org/t/p/w200<%=movie.poster_path%>" alt="<%= movie.title %>">
             </td>
             <% end %>
           </tr>

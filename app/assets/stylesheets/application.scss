@@ -63,3 +63,26 @@ html {
   margin: 20px;
 
 }
+
+#table-wrapper {
+  position:relative;
+  margin-top:20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+#table-scroll {
+  height:600px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
+}
+
+#table-wrapper table thead th .text {
+  position:sticky;
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:300px;
+}

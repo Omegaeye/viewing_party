@@ -10,7 +10,6 @@ class MovieService
 
   def movies_by_title(movie_title)
     response = connection.get("search/movie?query=#{movie_title}")
-
     JSON.parse(response.body, symbolize_names: true)
   end
 
