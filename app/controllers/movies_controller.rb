@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
                 end
               end
   end
+
   def show
     data = MovieService.movie_by_id(params[:id])
     @movie = MovieApi.new(data)

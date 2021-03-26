@@ -28,7 +28,6 @@ class MovieService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-
   def self.connection
     Faraday.new(url: 'https://api.themoviedb.org/3/', params: { api_key: ENV['movie_db_api_key'] })
   end

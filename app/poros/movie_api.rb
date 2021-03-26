@@ -4,9 +4,7 @@ class MovieApi
               :vote_average,
               :duration,
               :genres,
-              :overview,
-              :cast,
-              :reviews
+              :overview
 
   def initialize(data)
     @id = data[:id]
