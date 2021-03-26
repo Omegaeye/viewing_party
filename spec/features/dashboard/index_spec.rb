@@ -4,18 +4,33 @@ describe 'As an authenticated user' do
   describe 'when I visit "/dashboard" I see' do
     before :each do
       @user = User.create!(username: "sphinx", email: "123fake@email.com", password: "password")
-      visit root_path
-      within '.login-form' do
-        fill_in :username, with: @user.username
-        fill_in :password, with: @user.password
+      @user_2 = User.create!(
+        email: "friendboy@email.com",
+        username: "friendmandude",
+        password: "heck"
+      )
+      @movie = Movie.create!(
+        title: "Daybreak",
+        duration: 180,
+        api_id: "kesjmrv8io2w3ay5n98327nhvaw38ouy3rhju"
+      )
+      @invite_party = @user_2.parties.create!(
+        movie_id: @movie.id,
+        duration: 195,
+        party_date: Date.today,
+        party_time: Time.now
+      )
+      @invite_party.party_viewers.create!(viewer_id: @user.id)
 
-        click_on "Log In"
-      end
-      visit dashboard_path
+      visit root_path
+      fill_in :username, with: @user.username
+      fill_in :password, with: "password"
+
+      click_on "Log In"
     end
 
     it "'Welcome <username>!' at the top of page" do
-      expect(page).to have_content("Welcome #{@user.username}!")
+      expect(page).to have_content("Welcome, #{@user.username}!")
     end
 
     it "A button to Discover Movies" do
@@ -25,12 +40,45 @@ describe 'As an authenticated user' do
       expect(current_path).to eq(discover_path)
     end
 
-    it "A friends section" do
-      expect(page).to have_content("Friends:")
+    describe "friends section" do
+      it "tells me I have no friends" do
+        expect(page).to have_content("Friends:")
+        expect(page).to have_content("You currently have no friends.")
+      end
+
+      it "gives me the option to add friends" do
+        within('div#add_friend') do
+          expect(page).to have_content("Add a friend:")
+          expect(page).to have_content("Search by email:")
+          fill_in(:friend, with: @user_2.email)
+          click_button("Add Friend")
+        end
+
+        within('div#friends_list') do
+          expect(page).to have_content(@user_2.username)
+        end
+      end
     end
 
     it "A viewing parties section" do
-      expect(page).to have_content("Parties:")
+      expect(page).to have_content("Watch Parties:")
+      expect(page).to have_content("Invited:")
+      page.all('div.parties_for_you').each do |div|
+        expect(div).to have_content("Movie:")
+        expect(div).to have_content("Duration:")
+        expect(div).to have_content("Hosted by:")
+        expect(div).to have_content("Date:")
+        expect(div).to have_content("Time:")
+      end
+
+      expect(page).to have_content("Hosting:")
+      page.all('div.parties_you_run').each do |div|
+        expect(div).to have_content("Movie:")
+        expect(div).to have_content("Duration:")
+        expect(div).to have_content("Invitees:")
+        expect(div).to have_content("Date:")
+        expect(div).to have_content("Time:")
+      end
     end
   end
 end
