@@ -13,8 +13,8 @@ describe MovieService do
     #   to_return(status: 200, body: json_response, headers: {})
   #end
   context "instance methods" do
-    context "#top_rated_movies", :vcr do
-      it "returns movie data for the 40 top rated movies" do
+    context "#top_rated_movies" do
+      it "returns movie data for the 40 top rated movies", :vcr do
         # json_response = File.read('spec/fixtures/top_movies.json')
         # stub_request(:get, "https://api.themoviedb.org/3/search/movie?query=the?&api_key=#{ENV['movie_db_api_key']}").
         #   with(
@@ -39,8 +39,8 @@ describe MovieService do
           expect(movie_data[:vote_average]).to be_a(Float)
       end
     end
-    context "#movies_by_title", :vcr do
-      it "returns movie data based on a title" do
+    context "#movies_by_title" do
+      it "returns movie data based on a title", :vcr do
           movies = MovieService.movies_by_title('the')
           expect(movies).to be_a Array
           expect(movies.count).to eq(20)
@@ -56,8 +56,8 @@ describe MovieService do
           expect(movie_data[:vote_average]).to be_a(Float)
       end
     end
-    context "#movie_by_id", :vcr do
-      it "returns movie data based on an ID" do
+    context "#movie_by_id" do
+      it "returns movie data based on an ID", :vcr do
           movie = MovieService.movie_by_id(24428)
           expect(movie).to be_a Hash
 
@@ -80,8 +80,8 @@ describe MovieService do
           expect(movie[:overview]).to be_a(String)
       end
     end
-    context "#cast", :vcr do
-      it "returns movie cast based on an ID" do
+    context "#cast" do
+      it "returns movie cast based on an ID", :vcr do
           credits = MovieService.cast(24428)
           expect(credits).to be_a Hash
 
@@ -94,8 +94,8 @@ describe MovieService do
           expect(cast_member).to have_key :character
       end
     end
-    context "#reviews", :vcr do
-      it "returns movie reviews based on an ID" do
+    context "#reviews" do
+      it "returns movie reviews based on an ID", :vcr do
           reviews = MovieService.reviews(24428)
           expect(reviews).to be_a Hash
 
