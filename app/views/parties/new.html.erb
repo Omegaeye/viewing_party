@@ -15,8 +15,8 @@
       <h2><center> Invite your friends: </center></h2>
       <% if @user.friendships.any? %><br>
         <% @user.friendships.each do |friend| %>
-          <%= form.label :friends, friend.friend.username %>
-          <%= form.check_box :friends %>
+            <%= form.label :friends, friend.friend.username %>
+            <%= form.check_box :friends, id: "friend-#{friend.friend.username}", params: {friend_id: friend.friend.id}%>
         <% end %>
       <%end %><br>
       <%= form.submit "Create Party" %>

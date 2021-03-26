@@ -24,14 +24,29 @@ RSpec.describe 'Viewing Party New Page' do
       it "I should see the name of the movie title rendered above a form" do
         expect(page).to have_content(@movie.title)
       end
+
       it "I see a form to add a new viewing party" do
         expect(page).to have_field(:duration)
         expect(page).to have_field(:date)
         expect(page).to have_field(:time)
-
       end
+
       it "I see checkboxes next to each friend (if user has friends)" do
-        expect(page).to have_field(:friends)
+        # expect(page).to have_field(:friends)
+      end
+    end
+
+    describe "I can fill out the form and create a new party" do
+      it "I can fill out party form" do
+
+        fill_in :duration, with: 160
+        fill_in :date, with: "03/31/2021"
+        fill_in :time, with: "12:30 PM"
+        save_and_open_page
+        find(:css, "#friend-#{@lowfive.username}").set(true)
+        find(:css, "#friend-#{@sidefive.username}").set(false)
+        find(:css, "#friend-#{@nofive.username}").set(true)
+        click_button("Create Party")
       end
     end
   end
