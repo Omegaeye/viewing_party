@@ -6,7 +6,7 @@ describe 'As an authenticated user' do
       visit discover_path
     end
 
-    describe "Button to Discover top 40 movies" do
+    describe "Button to Discover top 40 movies", :vcr do
       it "When I click the top rated button, it takes me to the movie page" do
         within ".rated" do
           expect(page).to have_button("Find Top Rated Movies")
@@ -16,7 +16,7 @@ describe 'As an authenticated user' do
       end
     end
 
-    describe "User can search by movie title " do
+    describe "User can search by movie title", :vcr do
       it "I can see a text field to search by movie title with a button" do
         within ".title" do
           expect(page).to have_field(:movie_title)

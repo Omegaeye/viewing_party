@@ -8,7 +8,7 @@ describe 'As an authenticated user' do
       click_button
     end
   end
-  describe 'when I visit "/movies" I see' do
+  describe 'when I visit "/movies" I see', :vcr do
     it "I should see the 40 result to my top rated" do
       expect(page).to have_content("Top Rated Movies:")
       expect(page).to have_content("Life Is Beautiful")
@@ -20,10 +20,9 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Life Is Beautiful")
       click_link "Life Is Beautiful"
       expect(current_path).to eq(movie_path(637))
-
     end
 
-    describe "Button to Discover top 40 movies" do
+    describe "Button to Discover top 40 movies", :vcr do
       it "When I click the top rated button, it takes me to the movie page" do
         within ".rated" do
           expect(page).to have_button("Find Top Rated Movies")
@@ -33,7 +32,7 @@ describe 'As an authenticated user' do
       end
     end
 
-    describe "User can search by movie title " do
+    describe "User can search by movie title", :vcr do
       it "I can see a text field to search by movie title with a button" do
         within ".title" do
           expect(page).to have_field(:movie_title)
