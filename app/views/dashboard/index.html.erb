@@ -1,12 +1,31 @@
 <header>
-  Welcome <%= @user.username %>!
+  <%= "Welcome, #{current_user.username}!" %>
 </header>
 
 <%= button_to "Discover Movies", discover_path, method: :get%>
 
-<h2>
-  Friends:
-</h2>
+<section>
+  <h2>Friends:</h2>
+  <div id="add_friend">
+    <h3>Add a friend: </h3>
+    <%= form_with url: friendships_path, local: true do |f| %>
+      <%= f.label :friend, "Search by email:" %>
+      <%= f.text_field :friend %>
+      <%= f.submit "Add Friend" %>
+    <% end %>
+  </div>
+  <div id="friends_list">
+    <% if @friends.none? %>
+      <p>You currently have no friends.</p>
+    <% else %>
+      <% @friends.each do |friend| %>
+      <ul>
+        <li><%= friend.friend.username %>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
+</section>
 
 <section id="watch_parties">
   <h2>Watch Parties:</h2>

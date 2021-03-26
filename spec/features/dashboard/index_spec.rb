@@ -30,7 +30,7 @@ describe 'As an authenticated user' do
     end
 
     it "'Welcome <username>!' at the top of page" do
-      expect(page).to have_content("Welcome #{@user.username}!")
+      expect(page).to have_content("Welcome, #{@user.username}!")
     end
 
     it "A button to Discover Movies" do
@@ -40,8 +40,24 @@ describe 'As an authenticated user' do
       expect(current_path).to eq(discover_path)
     end
 
-    it "A friends section" do
-      expect(page).to have_content("Friends:")
+    describe "friends section" do
+      it "tells me I have no friends" do
+        expect(page).to have_content("Friends:")
+        expect(page).to have_content("You currently have no friends.")
+      end
+
+      it "gives me the option to add friends" do
+        within('div#add_friend') do
+          expect(page).to have_content("Add a friend:")
+          expect(page).to have_content("Search by email:")
+          fill_in(:friend, with: @user_2.email)
+          click_button("Add Friend")
+        end
+
+        within('div#friends_list') do
+          expect(page).to have_content(@user_2.username)
+        end
+      end
     end
 
     it "A viewing parties section" do
