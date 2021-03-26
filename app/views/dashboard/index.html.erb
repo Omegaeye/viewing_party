@@ -4,10 +4,42 @@
 
 <%= button_to "Discover Movies", discover_path, method: :get%>
 
-<header>
+<h2>
   Friends:
-</header>
+</h2>
 
-<header>
-  Parties:
-</header>
+<section id="watch_parties">
+  <h2>Watch Parties:</h2>
+  <br>
+  <h3>Invited:</h3>
+  <% @parties[:invited_to].each do |party| %>
+    <div class="parties_for_you">
+      <%= "Movie: #{party.movie.title}" %>
+      <br>
+      <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %>
+      <br>
+      <%= "Hosted by: #{party.host.username}" %>
+      <br>
+      <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %>
+      <br>
+      <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
+      <br>
+    </div>
+  <% end %>
+
+  <h3>Hosting:</h3>
+  <% @parties[:hosted].each do |party| %>
+    <div class="parties_you_run">
+      <%= "Movie: #{party.movie.title}" %>
+      <br>
+      <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %>
+      <br>
+      <%= "Invitees: #{party.viewer_usernames}" %>
+      <br>
+      <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %>
+      <br>
+      <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
+      <br>
+    </div>
+  <% end %>
+</section>

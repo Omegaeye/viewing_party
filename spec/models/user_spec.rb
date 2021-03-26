@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
       )
       user_2 = User.create!(
         email: "emailemail@email.com",
-        username: "shouldveinstalledfactorybot@example.com",
+        username: "shouldveinstalledfactorybot",
         password: "anotherone"
       )
       user_3 = User.create!(
