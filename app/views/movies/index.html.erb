@@ -18,7 +18,7 @@
           <% @movies.each do |movie| %>
           <tr>
             <td>
-              <%= link_to movie.title, movie_path(movie) %><br>
+              <%= link_to movie.title, movie_path(movie.id), method: :get %><br>
             </td>
             <td>
               <%= movie.vote_average %><br>
