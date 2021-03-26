@@ -19,6 +19,7 @@
 <p><%= @movie.reviews.count %> Reviews</p>
 <% if @movie.reviews %>
   <% @movie.reviews.each do |review| %>
-    <p><%= review %></p>
+    <p><%= review[0] %></p>
+    <p>Author: <%= review[1][:name] %></p>
   <% end %>
 <% end %>
