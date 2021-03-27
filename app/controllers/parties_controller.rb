@@ -7,7 +7,7 @@ class PartiesController < ApplicationController
   def create
     new_params = party_params
     new_params[:party_date] = party_params[:party_date].to_date
-    new_params[:party_time] = party_params[:party_time].to_time
+    new_params[:party_time] = Time.zone.parse(party_params[:party_time])
     @movie = Movie.find(params[:movie_id])
     party = @movie.parties.create!(new_params)
     if party.save
