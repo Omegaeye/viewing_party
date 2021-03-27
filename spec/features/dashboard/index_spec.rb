@@ -21,7 +21,6 @@ describe 'As an authenticated user' do
         party_time: Time.now
       )
       @invite_party.party_viewers.create!(viewer_id: @user.id)
-
       visit root_path
       fill_in :username, with: @user.username
       fill_in :password, with: "password"
