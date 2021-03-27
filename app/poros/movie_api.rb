@@ -4,7 +4,8 @@ class MovieApi
               :vote_average,
               :duration,
               :genres,
-              :overview
+              :overview,
+              :poster_path
 
   def initialize(data)
     @id = data[:id]
@@ -13,6 +14,7 @@ class MovieApi
     @duration = data[:runtime]
     @genres = data[:genres]
     @overview = data[:overview]
+    @poster_path = data[:poster_path]
   end
 
   def cast

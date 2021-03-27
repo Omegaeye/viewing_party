@@ -1,5 +1,5 @@
 <div class="viewing-party">
-  <%= button_to 'Create Viewing Party for Movie', new_viewing_party_path, method: :get, params: {movie_title: @movie.title, movie_duration: @movie.duration} %>
+  <%= button_to 'Create Viewing Party for Movie', movies_path, method: :post, params: {movie_title: @movie.title, movie_duration: @movie.duration, movie_img: @movie.poster_path, api_id: @movie.id}, local: true %>
 </div>
 
 <h1><%= @movie.title %></h1>

@@ -17,7 +17,7 @@
         <tbody>
           <% @movies.each do |movie| %>
           <tr>
-            <td>
+            <td id="movie-<%= movie.id %>">
               <%= link_to movie.title, movie_path(movie.id), method: :get %><br>
             </td>
             <td>
