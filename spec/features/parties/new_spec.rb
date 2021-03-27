@@ -33,9 +33,9 @@ describe 'Viewing Party New Page' do
   end
 
   it "I see checkboxes next to each friend (if user has friends)", :vcr do
-    find(:css, "#friend-#{@lowfive.id}").set(true)
-    find(:css, "#friend-#{@sidefive.id}").set(false)
-    find(:css, "#friend-#{@nofive.id}").set(true)
+    find(:css, "#friends_#{@lowfive.id}")
+    find(:css, "#friends_#{@sidefive.id}")
+    find(:css, "#friends_#{@nofive.id}")
   end
 
   describe "I can fill out the form and create a new party" do
@@ -44,6 +44,9 @@ describe 'Viewing Party New Page' do
       fill_in :duration, with: 160
       fill_in :party_date, with: Date.today
       fill_in :party_time, with: Time.now
+      find(:css, "#friends_#{@lowfive.id}").set(true)
+      find(:css, "#friends_#{@sidefive.id}").set(false)
+      find(:css, "#friends_#{@nofive.id}").set(true)
       click_button("Create Party")
     end
   end

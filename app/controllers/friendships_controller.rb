@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
         friend_id: @friend.id
       )
     else
-      flash[:error] = "Invalid Email"
+      flash[:error] = 'Invalid Email'
     end
     redirect_to dashboard_path
   end

@@ -11,3 +11,8 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+// <% current_user.friendships.each do |friend| %>
+//     <%= form.label :friends, friend.friend.username %>
+//     <%= form.check_box :friends, value: friend.friend.id, {multiple: true} id: "friends#{friend.friend.id}" %>
+// <% end %><br>
