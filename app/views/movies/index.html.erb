@@ -21,7 +21,15 @@
               <%= link_to movie.title, movie_path(movie.id), method: :get %><br>
             </td>
             <td>
-              <%= movie.vote_average %><br>
+              <div class="progress-bar progress-bar-striped progress-bar-animated"
+                   role="progressbar"
+                   aria-valuenow="<%= movie.vote_average %>"
+                   aria-valuemin="0"
+                   aria-valuemax="100"
+                   style="width: 75%"
+              >
+                <%= movie.vote_average %><br>
+              </div>
             </td>
             <td>
               <img src="https://image.tmdb.org/t/p/w200<%=movie.poster_path%>" alt="<%= movie.title %>">
