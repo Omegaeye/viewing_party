@@ -1,27 +1,30 @@
 class SessionController < ApplicationController
   def new; end
 
-  def create
-    user = User.find_by(email: params[:email].downcase)
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:message] = "Welcome #{user.email}!"
-
-      if user.regular?
-        redirect_to root_path
-      elsif user.admin?
-        redirect_to admin_dashboard_path
-      end
-
+  def login
+    user = User.find_by(username: params[:username])
+    if user
+      authenticate(user)
     else
-      flash[:message] = "email or password is incorrect"
-      render :new
+      flash[:error] = 'Invalid username and password.'
+      redirect_to root_path
     end
   end
 
-  def destroy
+  def authenticate(user)
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      flash[:success] = "Welcome, #{user.username}!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = 'Invalid password. Please try again.'
+      redirect_to root_path
+    end
+  end
+
+  def logout
+    #session[:user_id] = nil
     session.delete :user_id
-    # or use session.clear to erase all session data
     flash[:message] = "You have been logged out"
     redirect_to root_path
   end
