@@ -13,7 +13,6 @@ User.create!(username: "funbucket13", password: "test", email: 'funbucket13@gmai
 @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
 @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
 @nofive = User.create!(username: "nofive", email: "nofive@fake.com", password: "password", id: 103)
-@movie = Movie.create!(title: "The Mummy", duration: 120, api_id: 90)
 Friendship.create!(user: @highfive, friend: @lowfive, status: 0)
 Friendship.create!(user: @highfive, friend: @sidefive, status: 0)
 Friendship.create!(user: @highfive, friend: @nofive, status: 0)

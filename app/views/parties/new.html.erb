@@ -1,14 +1,25 @@
-<h1>Viewing Party Details</h1>
-<div class = "party-info">
-<%= form_with url: viewing_party_index_path, method: :post, local:true do |form| %>
-  <%= form.label :title, "Movie Title:"%>
-  <%= form.text_field :title, required:true, class: "form-control"%>
-  <%= form.label :duration, "Duration of Party:" %>
-  <%= form.number_field :duration, required: true, class: "form-control" %>
-  <%= form.label :date, "Day:" %>
-  <%= form.date_field :date, required: true, class: "form-control" %>
-  <%= form.label :time, "Start Time:" %>
-  <%= form.time_field :time, required: true, class: "form-control" %>
-  <%= form.submit "Create Party" %>
-<% end %>
-</div>
+<header><center>Welcome <%= current_user.username %>!</center></header>
+<h2><center> <%= @movie.title %> </center></h2>
+<center>
+  <img src="https://image.tmdb.org/t/p/w200<%= @movie.poster_path %>">
+  <div class = "login-form">
+    <%= form_with url: movie_viewing_party_index_path, method: :post, local: true do |form| %>
+      <%= form.hidden_field :host_id, value: current_user.id %>
+      <%= form.label :duration, "Duration of Party:" %>
+      <%= form.number_field :duration, required: true, class: "form-control", min: @movie.duration, value: @movie.duration %>
+      <%= form.label :party_date, "Day:" %>
+      <%= form.date_field :party_date, required: true, class: "form-control" %>
+      <%= form.label :party_time, "Start Time:" %>
+      <%= form.time_field :party_time, required: true, class: "form-control" %>
+
+      <h2><center> Invite your friends: </center></h2>
+        <%= form.collection_check_boxes(:friends, current_user.friends, :id, :username, include_hidden: false) do |friend| %>
+          <div>
+            <%= friend.check_box %>
+            <%= friend.label %>
+          </div>
+        <% end %>
+      <%= form.submit "Create Party" %>
+    <% end %>
+  </div>
+</center>

@@ -1,4 +1,4 @@
-<div class="title">
+<div class="title" style="float:right">
   <%= form_with url: movies_path, method: :get, local: true do |f| %>
   <%= f.label :movie_title, "Search by movie title" %>
   <%= f.text_field :movie_title, required: true %>

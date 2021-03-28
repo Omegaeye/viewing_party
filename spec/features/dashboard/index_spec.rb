@@ -21,7 +21,6 @@ describe 'As an authenticated user' do
         party_time: Time.now
       )
       @invite_party.party_viewers.create!(viewer_id: @user.id)
-
       visit root_path
       fill_in :username, with: @user.username
       fill_in :password, with: "password"
@@ -64,7 +63,6 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Watch Parties:")
       expect(page).to have_content("Invited:")
       page.all('div.parties_for_you').each do |div|
-        expect(div).to have_content("Movie:")
         expect(div).to have_content("Duration:")
         expect(div).to have_content("Hosted by:")
         expect(div).to have_content("Date:")
@@ -73,7 +71,6 @@ describe 'As an authenticated user' do
 
       expect(page).to have_content("Hosting:")
       page.all('div.parties_you_run').each do |div|
-        expect(div).to have_content("Movie:")
         expect(div).to have_content("Duration:")
         expect(div).to have_content("Invitees:")
         expect(div).to have_content("Date:")

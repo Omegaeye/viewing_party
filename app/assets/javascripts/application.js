@@ -28,7 +28,7 @@ if (storage.chkbx && storage.chkbx != '') {
 }
 
 
- $('#remember_me').click(function(){
+ $('#submit').click(function(){
 if ($('#remember_me').is(':checked')) {
 // save username and password
   storage.usrname = $('#username').val();

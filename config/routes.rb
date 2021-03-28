@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   post '/logout', to: 'users#logout'
   get '/dashboard', to: 'dashboard#index'
   resources :users, only: [:create]
-  resources :movies, only: [:index, :show]
-  resources :viewing_party, only: [:new, :create], :controller=>"parties"
+  
   resources :friendships, only: [:create]
+
+  resources :movies, only: [:index, :show, :create] do
+    resources :viewing_party, only: [:new, :create], :controller=>"parties"
+  end
 
   get '/discover', to: 'discover#index'
 end
