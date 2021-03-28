@@ -35,12 +35,11 @@
     <div class="parties_for_you">
       <%= render partial: "party_information", locals: {party: party} %>
     </div>
-  <% end %>
+  </div>
 
   <h3>Hosting:</h3>
   <% @parties[:hosted].each do |party| %>
     <div class="parties_you_run">
       <%= render partial: "party_information", locals: {party: party} %>
     </div>
-  <% end %>
 </section>

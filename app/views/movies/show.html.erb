@@ -1,25 +1,61 @@
+
+<section class="movie_show_data container-fluid">
+  <div class="row">
+    <div class="col">
+      <img src="https://image.tmdb.org/t/p/w200<%=@movie.poster_path%>" alt="<%= @movie.title %>">
+    </div>
+    <div class="col-9">
+      <h1 class="white_glow"><%= @movie.title %></h1>
+      <ul>
+        <li>
+          * <%= "#{@movie.duration/60} hours " + "#{@movie.duration%60} minutes" %>
+          * <% if @movie.genres %>
+          <% @movie.genres.each do |genre| %>
+          <%= genre[:name] %>,
+          <% end %>
+          <% end %>
+        </li>
+      </ul>
+      <p class="progress-bar progress-bar-striped progress-bar-animated"
+      role="progressbar"
+      aria-valuenow="<%= @movie.vote_average %>"
+      aria-valuemin="0"
+      aria-valuemax="10"
+      style="width: 75%"
+      >
+      Average: <%= @movie.vote_average %>
+    </p>
+    <div class='overview'>
+      <h3 style="text-align: left;">Summary:</h3>
+      <p style="text-align: left;"><%= @movie.overview %></p>
+    </div>
+    </div>
+  </div>
+</section>
+
 <div class="viewing-party">
-  <%= button_to 'Create Viewing Party for Movie', new_viewing_party_path, method: :get, params: {movie_title: @movie.title, movie_duration: @movie.duration} %>
+  <%= button_to 'Create Viewing Party for Movie', movies_path, method: :post, params: {movie_title: @movie.title, movie_duration: @movie.duration, movie_img: @movie.poster_path, api_id: @movie.id}, local: true %>
 </div>
 
-<h1><%= @movie.title %></h1>
-<p>Vote Average: <%= @movie.vote_average %></p>
-<p>Runtime: <%= "#{@movie.duration/60} hours " + "#{@movie.duration%60} minutes" %></p>
-Genres: <% if @movie.genres %>
-  <% @movie.genres.each do |genre| %>
-    <%= genre[:name] %>,
-  <% end %>
-<% end %>
-<section class= 'overview'>
-<h3>Summary:</h3>
-<p><%= @movie.overview %></p>
-<h3>Cast:</h3>
-<% if @movie.cast %>
-  <% @movie.cast.each do |member| %>
-    <p><%= member.first %> as <%= member.last %></p>
-  <% end %>
-<% end %>
-</section>
+<h3 class="white_glow"><center>Cast:<center></h3>
+<div style="overflow:auto">
+  <div class="row flex-row flex-nowrap">
+    <% if @movie.cast %>
+      <% @movie.cast.each do |member| %>
+      <div class="col-3">
+        <div class="card" style="width:auto;">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=member[:profile_path]%>" alt="<%= member[:name] %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= member[:name] %></h5>
+            <p class="card-text"><%= member[:character] %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+  </div>
+</div>
+
 <section class= 'reviews'>
 <h3><%= @movie.reviews.count %> Review(s)</h3>
 <% if @movie.reviews %>
