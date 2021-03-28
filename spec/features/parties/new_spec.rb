@@ -49,5 +49,27 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@nofive.id}").set(true)
       click_button("Create Party")
     end
+
+    it "I can create a party without friends", :vcr do
+      fill_in :duration, with: 160
+      fill_in :party_date, with: Date.today
+      fill_in :party_time, with: Time.now
+      find(:css, "#friends_#{@lowfive.id}").set(false)
+      find(:css, "#friends_#{@sidefive.id}").set(false)
+      find(:css, "#friends_#{@nofive.id}").set(false)
+      click_button("Create Party")
+      expect(current_path).to eq(dashboard_path)
+    end
+
+    it "I can't create a party without filling out informations", :vcr do
+      fill_in :duration, with: ''
+      fill_in :party_date, with: ''
+      fill_in :party_time, with: ''
+      find(:css, "#friends_#{@lowfive.id}").set(false)
+      find(:css, "#friends_#{@sidefive.id}").set(false)
+      find(:css, "#friends_#{@nofive.id}").set(false)
+      click_button("Create Party")
+      expect(page).to have_content("Party can't be created, you're missing some informations")
+    end
   end
 end

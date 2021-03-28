@@ -7,7 +7,7 @@ class PartyViewer < ApplicationRecord
 
     ids.all? do |viewer_id|
       pv = PartyViewer.create!(party_id: party_id, viewer_id: viewer_id)
-        pv.save
+      pv.save
     end
   end
 end
