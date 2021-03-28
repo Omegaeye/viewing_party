@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @friends = current_user.friendships
     invited = current_user.invites
     hosting = current_user.parties
     @parties = {
