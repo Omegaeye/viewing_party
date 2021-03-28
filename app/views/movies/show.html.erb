@@ -34,7 +34,7 @@
 </section>
 
 <div class="viewing-party">
-  <%= button_to 'Create Viewing Party for Movie', movies_path, method: :post, params: {movie_title: @movie.title, movie_duration: @movie.duration, movie_img: @movie.poster_path, api_id: @movie.id}, local: true %>
+  <%= button_to 'Create Viewing Party for Movie', movies_path, method: :post, params: {title: @movie.title, duration: @movie.duration, poster_path: @movie.poster_path, api_id: @movie.id}, local: true %>
 </div>
 
 <h3 class="white_glow"><center>Cast:<center></h3>

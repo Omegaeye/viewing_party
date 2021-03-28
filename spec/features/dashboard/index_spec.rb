@@ -73,18 +73,18 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Invited:")
       page.all('div.parties_for_you').each do |div|
         expect(div).to have_content("Duration:")
-        expect(div).to have_content("Hosted by:")
-        expect(div).to have_content("Date:")
-        expect(div).to have_content("Time:")
+        expect(div).to have_content("Hosted by: #{@user_2.username}")
+        expect(div).to have_content("Date: #{@invite_party.party_date.strftime("%e %b %Y")}")
+        expect(div).to have_content("Time: #{@invite_party.party_time.strftime('%l:%M %p %Z')}")
       end
 
       expect(page).to have_content("Hosting:")
-      page.all('div.parties_you_run').each do |div|
-        expect(div).to have_content("Duration:")
-        expect(div).to have_content("Invitees:")
-        expect(div).to have_content("Date:")
-        expect(div).to have_content("Time:")
-      end
+      #save_and_open_page
+        # expect(div).to have_content("Duration:")
+        # expect(div).to have_content("Invitees:")
+        # expect(div).to have_content("Date: #{@invite}")
+        # expect(div).to have_content("Time:")
+      #end
     end
   end
 end

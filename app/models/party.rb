@@ -4,7 +4,7 @@ class Party < ApplicationRecord
   has_many :party_viewers, dependent: :destroy
 
   validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0 }
-
+  before_save :convert_date, :convert_time
   def viewer_usernames
     usernames = party_viewers.map { |slot| slot.viewer.username }
     case usernames.count
@@ -15,5 +15,15 @@ class Party < ApplicationRecord
     else
       usernames.join(', ')
     end
+  end
+
+  private
+
+  def convert_date
+    party_date = party_date.to_date if party_date
+  end
+
+  def convert_time
+    party_time = Time.zone.parse(party_time) if party_time
   end
 end

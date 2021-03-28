@@ -69,7 +69,7 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@sidefive.id}").set(false)
       find(:css, "#friends_#{@nofive.id}").set(false)
       click_button("Create Party")
-      expect(page).to have_content("Party can't be created, you're missing some informations")
+      expect(page).to have_content("Party can't be created, you're missing some information.")
     end
   end
 end
