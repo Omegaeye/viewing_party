@@ -58,6 +58,15 @@ describe 'As an authenticated user' do
           expect(page).to have_content(@user_2.username)
         end
       end
+      it "gives me an error when trying to add a friend email that doesn't exist" do
+        within('div#add_friend') do
+          expect(page).to have_content("Add a friend:")
+          expect(page).to have_content("Search by email:")
+          fill_in(:friend, with: 'test_email@gmail.com')
+          click_button("Add Friend")
+        end
+        expect(page).to have_content('Invalid Email')
+      end
     end
 
     it "A viewing parties section" do
