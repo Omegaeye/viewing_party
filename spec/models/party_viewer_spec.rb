@@ -23,7 +23,7 @@ RSpec.describe PartyViewer, type: :model do
   describe "methods" do
     it "can create_multiple_viewers" do
       ids = [@lowfive.id, @sidefive.id, @nofive.id]
-      expect(PartyViewer.create_multiple_viewers(ids, @party1.id)).to eq([101, 102, 103])
+      expect(PartyViewer.create_multiple_viewers(ids, @party1.id)).to eq(true)
     end
   end
 end

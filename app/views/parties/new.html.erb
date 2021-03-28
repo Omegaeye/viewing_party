@@ -13,7 +13,7 @@
       <%= form.time_field :party_time, required: true, class: "form-control" %>
 
       <h2><center> Invite your friends: </center></h2>
-        <%= form.collection_check_boxes(:friends, current_user.friends, :id, :username) do |friend| %>
+        <%= form.collection_check_boxes(:friends, current_user.friends, :id, :username, include_hidden: false) do |friend| %>
           <div>
             <%= friend.check_box %>
             <%= friend.label %>

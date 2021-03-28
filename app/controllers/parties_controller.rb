@@ -7,7 +7,13 @@ class PartiesController < ApplicationController
   def create
     party = @movie.parties.create!(new_params)
     if party.save
-      PartyViewer.create_multiple_viewers(params[:friends], party.id)
+       pv = PartyViewer.create_multiple_viewers(params[:friends], party.id)
+        if pv
+          flash[:success] = 'Party Viewer Created'
+        else
+          flash[:error] = pv.errors.full_messages.to_sentence
+          render :new
+        end
       flash[:success] = 'Party Created'
       redirect_to dashboard_path
     else
