@@ -63,7 +63,6 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Watch Parties:")
       expect(page).to have_content("Invited:")
       page.all('div.parties_for_you').each do |div|
-        expect(div).to have_content("Movie:")
         expect(div).to have_content("Duration:")
         expect(div).to have_content("Hosted by:")
         expect(div).to have_content("Date:")
@@ -72,7 +71,6 @@ describe 'As an authenticated user' do
 
       expect(page).to have_content("Hosting:")
       page.all('div.parties_you_run').each do |div|
-        expect(div).to have_content("Movie:")
         expect(div).to have_content("Duration:")
         expect(div).to have_content("Invitees:")
         expect(div).to have_content("Date:")

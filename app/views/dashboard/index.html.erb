@@ -31,34 +31,43 @@
   <h2>Watch Parties:</h2>
   <br>
   <h3>Invited:</h3>
-  <% @parties[:invited_to].each do |party| %>
-    <div class="parties_for_you">
-      <%= "Movie: #{party.movie.title}" %>
-      <br>
-      <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %>
-      <br>
-      <%= "Hosted by: #{party.host.username}" %>
-      <br>
-      <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %>
-      <br>
-      <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
-      <br>
+  <div style="overflow:auto">
+    <div class="row flex-row flex-nowrap">
+      <% @parties[:invited_to].each do |party| %>
+        <div class="col-3 parties_for_you"">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=party.movie.poster_path%>" alt="<%= party.movie.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= party.movie.title %> Party</h5>
+              <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %><br>
+              <%= "Hosted by: #{party.host.username}" %>
+              <%= "Invitees: #{party.viewer_usernames}" %><br>
+              <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %><br>
+              <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 
   <h3>Hosting:</h3>
-  <% @parties[:hosted].each do |party| %>
-    <div class="parties_you_run">
-      <%= "Movie: #{party.movie.title}" %>
-      <br>
-      <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %>
-      <br>
-      <%= "Invitees: #{party.viewer_usernames}" %>
-      <br>
-      <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %>
-      <br>
-      <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
-      <br>
+      <div style="overflow:auto">
+        <div class="row flex-row flex-nowrap">
+          <% @parties[:hosted].each do |party| %>
+        <div class="col-3 parties_you_run"">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=party.movie.poster_path%>" alt="<%= party.movie.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= party.movie.title %> Party</h5>
+                <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %><br>
+                <%= "Invitees: #{party.viewer_usernames}" %><br>
+                <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %><br>
+                <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
 </section>
