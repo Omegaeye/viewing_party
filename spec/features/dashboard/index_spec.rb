@@ -14,6 +14,11 @@ describe 'As an authenticated user' do
         duration: 180,
         api_id: "kesjmrv8io2w3ay5n98327nhvaw38ouy3rhju"
       )
+      @movie2 = Movie.create!(
+        title: "Daybreak",
+        duration: 180,
+        api_id: "kesjmrv8io2w3ay5n98327nhvaw38ouy3rhju"
+      )
       @invite_party = @user_2.parties.create!(
         movie_id: @movie.id,
         duration: 195,
@@ -21,7 +26,7 @@ describe 'As an authenticated user' do
         party_time: Time.now
       )
       @invite_party2 = @user.parties.create!(
-        movie_id: @movie.id,
+        movie_id: @movie2.id,
         duration: 195,
         party_date: Date.new(2021, 05, 02),
         party_time: Time.new(2021, 05, 02, 2, 2, 2)
@@ -77,7 +82,8 @@ describe 'As an authenticated user' do
     it "A viewing parties section" do
       expect(page).to have_content("Watch Parties:")
       expect(page).to have_content("Invited:")
-      page.all('div.parties_for_you').each do |div|
+      save_and_open_page
+      page.all('div.col-3 parties_for_you').each do |div|
         expect(div).to have_content("Duration: 3 hours 15 minutes")
         expect(div).to have_content("Hosted by: #{@user_2.username}")
         expect(div).to have_content("Invitees: sphinx")
@@ -86,7 +92,7 @@ describe 'As an authenticated user' do
       end
 
       expect(page).to have_content("Hosting:")
-      page.all('div.parties_you_run').each do |div|
+      page.all('div.col-3 parties_you_run').each do |div|
         expect(div).to have_content("Duration: 3 hours 15 minutes")
         expect(div).to have_content("Hosted by: #{@user.username}")
         expect(div).to have_content("Invitees: None")

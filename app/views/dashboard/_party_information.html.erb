@@ -1,12 +1,12 @@
-<%= "Movie: #{party.movie.title}" %>
-<br>
-<%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %>
-<br>
-<%= "Date: #{party.party_date.strftime("%e %b %Y")}" %>
-<br>
-<%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %>
-<br>
-<%= "Hosted by: #{party.host.username}" %>
-<br>
-<br>
-<%= "Invitees: #{party.viewer_usernames}" %>
+<div class="card" style="width:auto;">
+  <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=party.movie.poster_path%>" alt="<%= party.movie.title %>">
+  <div class="card-body">
+    <h5 class="card-title"><%= party.movie.title %> Party</h5>
+    <%= "Movie: #{party.movie.title}" %><br>
+    <%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %><br>
+    <%= "Date: #{party.party_date.strftime("%e %b %Y")}" %><br>
+    <%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %><br>
+    <%= "Hosted by: #{party.host.username}" %><br>
+    <%= "Invitees: #{party.viewer_usernames}" %>
+  </div>
+</div>
