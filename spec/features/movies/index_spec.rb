@@ -10,7 +10,7 @@ describe 'As an authenticated user' do
   end
   describe 'when I visit "/movies" I see' do
     it "I should see the 40 result to my top rated", :vcr do
-      expect(page).to have_content("Top Rated Movies:")
+      expect(page).to have_content("Movies:")
       expect(page).to have_content("Life Is Beautiful")
       expect(page).to have_link("Life Is Beautiful")
       expect(page).to have_content("Vote Average:")
