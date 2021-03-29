@@ -82,7 +82,6 @@ describe 'As an authenticated user' do
     it "A viewing parties section" do
       expect(page).to have_content("Watch Parties:")
       expect(page).to have_content("Invited:")
-      save_and_open_page
       page.all('div.col-3 parties_for_you').each do |div|
         expect(div).to have_content("Duration: 3 hours 15 minutes")
         expect(div).to have_content("Hosted by: #{@user_2.username}")
