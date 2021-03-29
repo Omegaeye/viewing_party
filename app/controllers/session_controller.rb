@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
   def new; end
 
-  def login
+  def create
     user = User.find_by(username: params[:username])
     if user
       authenticate(user)
@@ -22,7 +22,7 @@ class SessionController < ApplicationController
     end
   end
 
-  def logout
+  def destroy
     session.delete :user_id
     flash[:message] = 'You have been logged out.'
     redirect_to root_path
