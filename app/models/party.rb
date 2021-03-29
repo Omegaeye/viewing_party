@@ -16,4 +16,10 @@ class Party < ApplicationRecord
       usernames.join(', ')
     end
   end
+
+  private
+
+  def convert_date
+    self.party_date = party_date.to_date if party_date
+  end
 end

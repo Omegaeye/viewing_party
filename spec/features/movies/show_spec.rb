@@ -27,7 +27,7 @@ describe 'As an authenticated user' do
         expect(page).to have_button('Create Viewing Party for Movie')
         click_button
       end
-      # expect(current_path).to eq(new_movie_viewing_party_path(@movie))
+      #expect(current_path).to eq(new_movie_viewing_party_path(@movie.id))
     end
     describe "And I should see the following information about the movie:" do
       it "Movie title", :vcr do
@@ -48,8 +48,11 @@ describe 'As an authenticated user' do
         expect(page).to have_content(@movie.overview)
       end
       it "List the first 10 cast members (characters&actress/actors)", :vcr do
-        expect(page).to have_content(@movie.cast.first[0])
-        expect(page).to have_content(@movie.cast.first[1])
+        expect(page).to have_content(@movie.cast.first[:name])
+        expect(page).to have_content(@movie.cast.first[:character])
+        expect(page).to have_content(@movie.cast[9][:name])
+        expect(page).to have_content(@movie.cast[9][:character])
+        expect(page).to have_content(@movie.cast[10][:name])
       end
       it "Count of total reviews", :vcr do
         expect(page).to have_content('19 Review(s)')
