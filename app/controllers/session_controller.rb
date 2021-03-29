@@ -23,9 +23,8 @@ class SessionController < ApplicationController
   end
 
   def logout
-    #session[:user_id] = nil
     session.delete :user_id
-    flash[:message] = "You have been logged out."
+    flash[:message] = 'You have been logged out.'
     redirect_to root_path
   end
 end
