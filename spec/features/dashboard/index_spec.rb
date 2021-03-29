@@ -20,6 +20,12 @@ describe 'As an authenticated user' do
         party_date: Date.today,
         party_time: Time.now
       )
+      @invite_party2 = @user.parties.create!(
+        movie_id: @movie.id,
+        duration: 195,
+        party_date: Date.new(2021, 05, 02),
+        party_time: Time.new(2021, 05, 02, 2, 2, 2)
+      )
       @invite_party.party_viewers.create!(viewer_id: @user.id)
       visit root_path
       fill_in :username, with: @user.username
@@ -72,19 +78,21 @@ describe 'As an authenticated user' do
       expect(page).to have_content("Watch Parties:")
       expect(page).to have_content("Invited:")
       page.all('div.parties_for_you').each do |div|
-        expect(div).to have_content("Duration:")
+        expect(div).to have_content("Duration: 3 hours 15 minutes")
         expect(div).to have_content("Hosted by: #{@user_2.username}")
+        expect(div).to have_content("Invitees: sphinx")
         expect(div).to have_content("Date: #{@invite_party.party_date.strftime("%e %b %Y")}")
         expect(div).to have_content("Time:#{@invite_party.party_time.strftime('%l:%M %p %Z')}")
       end
 
       expect(page).to have_content("Hosting:")
-      #save_and_open_page
-        # expect(div).to have_content("Duration:")
-        # expect(div).to have_content("Invitees:")
-        # expect(div).to have_content("Date: #{@invite}")
-        # expect(div).to have_content("Time:")
-      #end
+      page.all('div.parties_you_run').each do |div|
+        expect(div).to have_content("Duration: 3 hours 15 minutes")
+        expect(div).to have_content("Hosted by: #{@user.username}")
+        expect(div).to have_content("Invitees: None")
+        expect(div).to have_content("Date:#{@invite_party2.party_date.strftime("%e %b %Y")}")
+        expect(div).to have_content("Time:#{@invite_party2.party_time.strftime('%l:%M %p %Z')}")
+      end
     end
   end
 end
