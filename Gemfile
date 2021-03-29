@@ -22,6 +22,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'autoprefixer-rails'
 gem 'faraday'
 gem 'figaro'
+#gem "mimemagic", "~> 0.3.6"
 
 group :development, :test do
   gem 'pry'
