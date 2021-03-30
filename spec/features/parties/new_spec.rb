@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Viewing Party New Page' do
   before :each do
     data = MovieService.movie_by_id(24428)
-    @movie = MovieApi.new(data)
+    @movie = Film.new(data)
     @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
     @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
     @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)

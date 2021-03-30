@@ -1,4 +1,4 @@
-class MovieApi
+class Film
   attr_reader :id,
               :title,
               :vote_average,
