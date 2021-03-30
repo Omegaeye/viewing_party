@@ -1,22 +1,108 @@
 # Viewing Party
 
-This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
+Viewing party is a way for user to log in and search movies through themoviedb.com API. It also allows a user to create and view their movie night events and events that they are invited to.
 
-### About this Project
+## Authors
 
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+- **Jenny Branham** - github - https://github.com/jbranham
+- **Hope McGee** - github - https://github.com/hopesgit
+- **Khoa Nguyen** - github - https://github.com/Omegaeye
 
-## Local Setup
+### Links
+  * https://github.com/Omegaeye/viewing_party
+  * https://www.themoviedb.org/
+  * https://www.themoviedb.org/settings/api
+  * http://localhost:3000/
+## Table of Contents
 
-1. Fork and Clone the repo
-2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:create`
+  - [Authors](#authors)
+  - [Getting Started](#getting-started)
+    - [Gem File](#gem-file)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [App Demo](#app-demo)
+  - [Runing the tests](#running-the-tests)
+  - [Deployment](#deployment)
+  - [Built With](#built-with)
+  - [License](#license)
+
+## Getting Started
+
+### Gem File
+
+![Screen Shot 2021-03-30 at 10 12 29 AM](https://user-images.githubusercontent.com/46826902/113021261-a4938d80-9140-11eb-8b2e-b2e15cec2f0a.png)
 
 
-## Versions
+### Prerequisites
 
-- Ruby 2.5.3
+What things you need to install the software and how to install them
 
-- Rails 5.2.4.3
+    * rails
 
-Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
+    ```sh
+    gem install rails --version 5.2.4.3
+    ```
+
+### Installing
+
+    1. Clone Repo
+    2. Install gem packages: `bundle install`
+    3. Setup, Migrate and Seed the database: `rails db:(create,migrate,seed)`
+
+## App Demo
+
+Nagivate to and Register as a user: http://localhost:3000/
+![Screen Shot 2021-03-30 at 1 01 40 PM](https://user-images.githubusercontent.com/46826902/113042806-da447080-9158-11eb-8e21-b7499ea825ac.png)
+
+Register as User:
+![Screen Shot 2021-03-30 at 1 20 52 PM](https://user-images.githubusercontent.com/46826902/113044403-d1ed3500-915a-11eb-8b2f-f238b602f5d6.png)
+
+For more in depth demo, please visit: https://gist.github.com/Omegaeye/9838427f1822b57dcdf9f2a54aeb020c
+
+Enjoy!
+
+
+## Running the tests
+
+In order to run all tests and see coverage run:
+
+```
+bundle exec rspec
+```
+
+In order to analyze programmer's ruby conventions and format, this app uses `gem rubocop`, run:
+
+```
+bundle exec rubocop
+```
+
+## Deployment
+  * This app is screened through Travis CI before deploying to Heroku.
+  * Need API Key from themoviedb.org
+      * create an account https://www.themoviedb.org/
+      * Apply for Api key https://www.themoviedb.org/settings/api
+      * Input Api Key to application.yml, run:  
+        ```
+        atom config/application.yml
+        ```
+        ![Screen Shot 2021-03-30 at 11 08 56 AM](https://user-images.githubusercontent.com/46826902/113028529-9c3f5080-9148-11eb-935a-d39b8076bf17.png)
+  * Hosted on: Heroku - https://morning-savannah-16693.herokuapp.com/
+
+### To Deploy locally
+    run:
+
+    ```
+    rails s
+    ```
+
+    Nagivate to http://localhost:3000/
+
+## Built With
+
+  - Ruby/Rails
+  - javascript/jquery
+  - HTML/CSS/Bootstrap
+
+## License
+
+  It is ours and ours alone.
