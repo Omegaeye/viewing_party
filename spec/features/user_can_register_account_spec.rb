@@ -37,6 +37,16 @@ describe 'as a visitor' do
       expect(page).to have_content("New User Registration")
     end
 
+    it "does not create a user with no password confirmation" do
+      fill_in "user[email]", with: "topdog23@example.com"
+      fill_in "user[username]", with: "topdog23"
+      fill_in "user[password]", with: "password"
+      click_button "Register"
+
+      expect(page).to have_content("Password confirmation doesn't match Password")
+      expect(page).to have_content("New User Registration")
+    end
+
     it "does not create a user if the username is taken" do
       User.create(email: "wandsalot@example.com", username: "topdog23", password: "password")
 
