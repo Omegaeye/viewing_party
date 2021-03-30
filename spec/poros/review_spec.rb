@@ -3,13 +3,13 @@ require 'rails_helper'
 describe Review, type: :class do
   describe 'class methods' do
     it 'initialize' do
-      data = { results: {
+      data = {
         author_details: {
           username: "TurboSloth",
           rating: 5
         },
         content: "Great flick! It's amazing what they can do with a camera these days...",
-      }}
+      }
 
       love_it = Review.new(data)
 
