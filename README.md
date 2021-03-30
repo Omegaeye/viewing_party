@@ -17,7 +17,6 @@ https://github.com/Omegaeye/viewing_party
   - [Deployment](#deployment)
   - [Built With](#built-with)
   - [License](#license)
-  - [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 
@@ -82,12 +81,4 @@ bundle exec rubocop
 
 ## License
 
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
-
-## Acknowledgments
-
-  - Hat tip to anyone whose code was used
-  - Inspiration
-  - etc
+  It is ours and ours alone.
