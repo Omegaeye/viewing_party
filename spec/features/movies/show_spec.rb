@@ -27,7 +27,7 @@ describe 'As an authenticated user' do
         expect(page).to have_button('Create Viewing Party for Movie')
         click_button
       end
-      #expect(current_path).to eq(new_movie_viewing_party_path(@movie.id))
+      expect(current_path).to eq(new_viewing_party_path)
     end
     describe "And I should see the following information about the movie:" do
       it "Movie title", :vcr do
