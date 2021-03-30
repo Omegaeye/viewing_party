@@ -7,12 +7,20 @@ Viewing party is a way for user to log in and search movies through themoviedb.c
 - **Jenny Branham** - github - https://github.com/jbranham
 - **Hope McGee** - github - https://github.com/hopesgit
 - **Khoa Nguyen** - github - https://github.com/Omegaeye
-https://github.com/Omegaeye/viewing_party
 
+### Links
+  * https://github.com/Omegaeye/viewing_party
+  * https://www.themoviedb.org/
+  * https://www.themoviedb.org/settings/api
+  * http://localhost:3000/
 ## Table of Contents
 
   - [Authors](#authors)
   - [Getting Started](#getting-started)
+    - [Gem File](#gem-file)
+    - [Prerequisites](#gem-file)
+    - [Installing](#gem-file)
+  - [App Demo](#app-demo)
   - [Runing the tests](#running-the-tests)
   - [Deployment](#deployment)
   - [Built With](#built-with)
@@ -20,7 +28,7 @@ https://github.com/Omegaeye/viewing_party
 
 ## Getting Started
 
-### GemFile
+### Gem File
 
 ![Screen Shot 2021-03-30 at 10 12 29 AM](https://user-images.githubusercontent.com/46826902/113021261-a4938d80-9140-11eb-8b2e-b2e15cec2f0a.png)
 
@@ -29,16 +37,30 @@ https://github.com/Omegaeye/viewing_party
 
 What things you need to install the software and how to install them
 
-* rails
-```sh
-gem install rails --version 5.2.4.3
-```
+    * rails
+
+    ```sh
+    gem install rails --version 5.2.4.3
+    ```
 
 ### Installing
 
     1. Clone Repo
     2. Install gem packages: `bundle install`
     3. Setup, Migrate and Seed the database: `rails db:(create,migrate,seed)`
+
+## App Demo
+
+Nagivate to and Register as a user: http://localhost:3000/
+![Screen Shot 2021-03-30 at 1 01 40 PM](https://user-images.githubusercontent.com/46826902/113042806-da447080-9158-11eb-8e21-b7499ea825ac.png)
+
+Register as User:
+![Screen Shot 2021-03-30 at 1 20 52 PM](https://user-images.githubusercontent.com/46826902/113044403-d1ed3500-915a-11eb-8b2f-f238b602f5d6.png)
+
+For more in depth demo, please visit: 
+
+Enjoy!
+
 
 ## Running the tests
 
@@ -68,9 +90,11 @@ bundle exec rubocop
 
 ### To Deploy locally
     run:
+
     ```
     rails s
     ```
+
     Nagivate to http://localhost:3000/
 
 ## Built With

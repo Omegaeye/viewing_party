@@ -1,7 +1,7 @@
 <%= button_to "Discover Movies", discover_path, method: :get%>
 
 <section>
-  <h2>Friends:</h2>
+  <header><center>Friends:</center></header>
   <div id="add_friend">
     <h3>Add a friend: </h3>
     <%= form_with url: friendships_path, local: true do |f| %>
@@ -10,39 +10,49 @@
       <%= f.submit "Add Friend" %>
     <% end %>
   </div>
-  <div id="friends_list">
     <% if current_user.friendships.none? %>
       <p>You currently have no friends.</p>
     <% else %>
       <% current_user.friendships.each do |friendship| %>
-      <ul>
-        <li><%= friendship.friend.username %>
-      </ul>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div id="friends_list">
+              <div class="fw-bold">
+                <%= friendship.friend.username.capitalize %>
+              </div>
+              Email: <%= friendship.friend.email %>
+            </div>
+          </div>
+          <span class="badge bg-primary rounded-pill"># of friends <%= friendship.friend.friends.count %></span>
+        </li>
+      </ol>
       <% end %>
     <% end %>
-  </div>
 </section>
 
+<header><center>Watch Parties:</center></header>
 <section id="watch_parties">
-  <h2>Watch Parties:</h2>
-  <br>
-  <h3>Invited:</h3>
-  <div style="overflow:auto">
-    <div class="row flex-row flex-nowrap">
-      <div class="col parties_for_you">
-        <% @parties[:invited_to].each do |party| %>
-          <%= render partial: "party_information", locals: {party: party} %>
+  <div>
+      <h2 class="blue_glow"><center>Invited:</center></h2>
+      <div style="overflow:auto">
+        <div class="row flex-row flex-nowrap">
+          <div class="col-3 parties_for_you">
+            <% @parties[:invited_to].each do |party| %>
+              <%= render partial: "party_information", locals: {party: party} %>
+          </div>
           <% end %>
+        </div>
       </div>
     </div>
-  </div>
-
-  <h3>Hosting:</h3>
-  <div style="overflow:auto">
-    <div class="row flex-row flex-nowrap">
-      <div class="col-3 parties_for_you>
-        <% @parties[:hosted].each do |party| %>
-          <%= render partial: "party_information", locals: {party: party} %>
+  <div >
+    <h2 class="blue_glow"><center>Hosting:</center></h2>
+    <div style="overflow:auto">
+      <div class="row flex-row flex-nowrap">
+        <div class="col-3 parties_you_run">
+          <% @parties[:hosted].each do |party| %>
+            <%= render partial: "party_information", locals: {party: party} %>
+        </div>
         <% end %>
       </div>
     </div>

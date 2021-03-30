@@ -65,7 +65,7 @@ describe 'As an authenticated user' do
         end
 
         within('div#friends_list') do
-          expect(page).to have_content(@user_2.username)
+          expect(page).to have_content(@user_2.username.capitalize)
         end
       end
       it "gives me an error when trying to add a friend email that doesn't exist" do
