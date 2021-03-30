@@ -1,22 +1,93 @@
 # Viewing Party
 
-This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
+Viewing party is a way for user to log in and search movies through themoviedb.com API. It also allows a user to create and view their movie night events and events that they are invited to.
 
-### About this Project
+## Authors
 
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+- **Jenny Branham** - github - https://github.com/jbranham
+- **Hope McGee** - github - https://github.com/hopesgit
+- **Khoa Nguyen** - github - https://github.com/Omegaeye
+https://github.com/Omegaeye/viewing_party
 
-## Local Setup
+## Table of Contents
 
-1. Fork and Clone the repo
-2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:create`
+  - [Authors](#authors)
+  - [Getting Started](#getting-started)
+  - [Runing the tests](#running-the-tests)
+  - [Deployment](#deployment)
+  - [Built With](#built-with)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
+
+## Getting Started
+
+### GemFile
+
+![Screen Shot 2021-03-30 at 10 12 29 AM](https://user-images.githubusercontent.com/46826902/113021261-a4938d80-9140-11eb-8b2e-b2e15cec2f0a.png)
 
 
-## Versions
+### Prerequisites
 
-- Ruby 2.5.3
+What things you need to install the software and how to install them
 
-- Rails 5.2.4.3
+* rails
+```sh
+gem install rails --version 5.2.4.3
+```
 
-Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
+### Installing
+
+    1. Clone Repo
+    2. Install gem packages: `bundle install`
+    3. Setup, Migrate and Seed the database: `rails db:(create,migrate,seed)`
+
+## Running the tests
+
+In order to run all tests and see coverage run:
+
+```
+bundle exec rspec
+```
+
+In order to analyze programmer's ruby conventions and format, this app uses `gem rubocop`, run:
+
+```
+bundle exec rubocop
+```
+
+## Deployment
+  * This app is screened through Travis CI before deploying to Heroku.
+  * Need API Key from themoviedb.org
+      * create an account https://www.themoviedb.org/
+      * Apply for Api key https://www.themoviedb.org/settings/api
+      * Input Api Key to application.yml, run:  
+        ```
+        atom config/application.yml
+        ```
+        ![Screen Shot 2021-03-30 at 11 08 56 AM](https://user-images.githubusercontent.com/46826902/113028529-9c3f5080-9148-11eb-935a-d39b8076bf17.png)
+  * Hosted on: Heroku - https://morning-savannah-16693.herokuapp.com/
+
+### To Deploy locally
+    run:
+    ```
+    rails s
+    ```
+    Nagivate to http://localhost:3000/
+
+## Built With
+
+  - Ruby/Rails
+  - javascript/jquery
+  - HTML/CSS/Bootstrap
+
+## License
+
+This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
+Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
+details
+
+## Acknowledgments
+
+  - Hat tip to anyone whose code was used
+  - Inspiration
+  - etc

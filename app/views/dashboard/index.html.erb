@@ -29,7 +29,7 @@
   <h3>Invited:</h3>
   <div style="overflow:auto">
     <div class="row flex-row flex-nowrap">
-      <div class="col-3 parties_for_you">
+      <div class="col parties_for_you">
         <% @parties[:invited_to].each do |party| %>
           <%= render partial: "party_information", locals: {party: party} %>
           <% end %>
