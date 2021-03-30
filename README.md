@@ -18,8 +18,8 @@ Viewing party is a way for user to log in and search movies through themoviedb.c
   - [Authors](#authors)
   - [Getting Started](#getting-started)
     - [Gem File](#gem-file)
-    - [Prerequisites](#gem-file)
-    - [Installing](#gem-file)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
   - [App Demo](#app-demo)
   - [Runing the tests](#running-the-tests)
   - [Deployment](#deployment)
@@ -57,7 +57,7 @@ Nagivate to and Register as a user: http://localhost:3000/
 Register as User:
 ![Screen Shot 2021-03-30 at 1 20 52 PM](https://user-images.githubusercontent.com/46826902/113044403-d1ed3500-915a-11eb-8b2f-f238b602f5d6.png)
 
-For more in depth demo, please visit: 
+For more in depth demo, please visit: https://gist.github.com/Omegaeye/9838427f1822b57dcdf9f2a54aeb020c
 
 Enjoy!
 
