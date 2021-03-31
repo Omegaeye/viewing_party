@@ -89,13 +89,14 @@ bundle exec rubocop
   * Hosted on: Heroku - https://morning-savannah-16693.herokuapp.com/
 
 ### To Deploy locally
-    run:
-
-    ```
-    rails s
-    ```
+    run: `rails s`
 
     Nagivate to http://localhost:3000/
+
+    In order to use mailcatcher:
+      1. `gem install mailcatcher`
+      2. run `mailcatcher`
+      3. go to http://127.0.0.1:1080/
 
 ## Built With
 
