@@ -17,8 +17,6 @@ describe Review, type: :class do
       expect(love_it.author).to be_a String
       expect(love_it.content).to eq ("Great flick! It's amazing what they can do with a camera these days...")
       expect(love_it.content).to be_a String
-      expect(love_it.rating).to eq(5)
-      expect(love_it.rating).to be_an Integer
     end
   end
 end

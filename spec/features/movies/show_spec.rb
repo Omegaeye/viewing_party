@@ -55,7 +55,6 @@ describe 'As an authenticated user' do
         expect(page).to have_content("#{@movie.reviews.count} Review(s)")
         review1 = @movie.reviews.first
         expect(page).to have_content(review1.author)
-        expect(page).to have_content(review1.rating)
         expect(page).to have_content(review1.content)
       end
     end

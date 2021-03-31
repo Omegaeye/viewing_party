@@ -61,7 +61,6 @@
   <% @movie.reviews.each do |review| %>
     <section>
       <h4>Author: <%= review.author %></h4>
-      <p>Rating: <%= review.rating %> stars</p>
       <p>Review: <%= review.content %></p>
     </section>
   <% end %>
