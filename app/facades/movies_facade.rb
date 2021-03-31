@@ -9,4 +9,10 @@ class MoviesFacade
       Film.new(data)
     end
   end
+
+  def self.search_top_rated_movies
+    MovieService.top_rated_movies.map do |data|
+      Film.new(data)
+    end
+  end
 end

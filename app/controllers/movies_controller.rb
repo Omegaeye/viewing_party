@@ -1,13 +1,10 @@
 class MoviesController < ApplicationController
   def index
     @movies = if params[:top_rated]
-                MovieService.top_rated_movies.map do |data|
-                  Film.new(data)
-                end
+                MoviesFacade.search_top_rated_movies
               else
                 MoviesFacade.search_movies_by_title(params[:movie_title])
               end
-              # change these to use movies facade
   end
 
   def show
