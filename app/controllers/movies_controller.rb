@@ -14,21 +14,4 @@ class MoviesController < ApplicationController
                         duration: @movie.duration,
                         poster_path: @movie.poster_path }
   end
-
-  def create
-    movie = Movie.create(movie_params)
-    if movie.save
-      flash[:success] = "Please fill out the folowing form to create a party for #{movie.title}"
-      redirect_to new_movie_viewing_party_path(movie)
-    else
-      flash[:error] = movie.errors.full_messages.to_sentence
-      render [movie]
-    end
-  end
-
-  private
-
-  def movie_params
-    params.permit(:title, :duration, :api_id, :poster_path)
-  end
 end
