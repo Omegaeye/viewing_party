@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PartyViewer, type: :model do
   before :each do
+    Movie.destroy_all
     @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
     @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
     @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
@@ -18,12 +19,5 @@ RSpec.describe PartyViewer, type: :model do
   describe 'relationships' do
     it { should belong_to :party }
     it { should belong_to(:viewer).class_name('User') }
-  end
-
-  describe "methods" do
-    it "can create_multiple_viewers" do
-      ids = [@lowfive.id, @sidefive.id, @nofive.id]
-      expect(PartyViewer.create_multiple_viewers(ids, @party1.id)).to eq(true)
-    end
   end
 end

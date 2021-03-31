@@ -4,6 +4,7 @@ describe "Movie Show Page" do
   describe 'As an authenticated user' do
     before :each do
       VCR.use_cassette("show-movie") do
+        Movie.destroy_all
         data = MovieService.movie_by_id(24428)
         @movie = MovieApi.new(data)
         @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
