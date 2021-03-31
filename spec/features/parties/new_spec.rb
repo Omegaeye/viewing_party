@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Viewing Party New Page' do
   before :each do
     VCR.use_cassette("new_viewing_party_page") do
+      Movie.destroy_all
       data = MovieService.movie_by_id(24428)
       @movie = MovieApi.new(data)
       @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
