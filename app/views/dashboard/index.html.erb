@@ -1,18 +1,18 @@
 
 <section>
-  <header>
-    <center>Welcome, <%= current_user.username %>!</center>
-  </header>
+  <header><center>Welcome, <%= current_user.username %>!</center></header>
+
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a href="/discover" id="discover"><button class="btn btn-outline-info">Discover Movies</button></a>
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Friends Menu</button>
+  </div>
 
-  <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Friends Menu</button>
-</div>
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Friends List:</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+
     <div class="offcanvas-body">
       <div id="add_friend">
         <h3>Add a friend: </h3>
@@ -22,26 +22,43 @@
         <%= f.submit "Add Friend", class: "btn btn-outline-info" %>
         <% end %>
       </div>
+
       <% if current_user.friendships.none? %>
-      <p>You currently have no friends.</p>
+        <p>You currently have no friends.</p>
       <% else %>
-      <% current_user.friendships.each do |friendship| %>
-      <ol class="list-group list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div id="friends_list">
-              <div class="fw-bold">
-                <%= friendship.friend.username.capitalize %>
+        <% current_user.friendships.each do |friendship| %>
+          <ol class="list-group list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div id="friends_list">
+                  <div class="fw-bold">
+                    <%= friendship.friend.username.capitalize %>
+                  </div>
+
+                  Email: <%= friendship.friend.email %>
+                </div>
+
               </div>
-              Email: <%= friendship.friend.email %>
-            </div>
-          </div>
-          <span class="badge bg-primary rounded-pill"># of friends <%= friendship.friend.friends.count %></span>
-        </li>
-      </ol>
+
+              <span class="badge bg-primary rounded-pill"># of friends <%= friendship.friend.friends.count %></span>
+            </li>
+          </ol>
+        <% end %>
       <% end %>
-      <% end %>
+
+      <ul class="social-links">
+  <li>
+    <a href="https://facebook.com"><svg role="img" viewBox="0 0 24 24" width="24" height="24"><title>Facebook icon</title><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"></path></svg></a>
+  </li>
+  <li>
+    <a href="https://twitter.com"><svg role="img" viewBox="0 0 24 24" width="24" height="24"><title>Twitter icon</title><path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.061a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.937 4.937 0 0 0 4.604 3.417 9.868 9.868 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 0 0 2.46-2.548l-.047-.02z"></path></svg></a>
+  </li>
+  <li>
+    <a href="https://youtube.com"><svg role="img" viewBox="0 0 24 24" width="24" height="24"><title>YouTube icon</title><path class="a" d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"></path></svg></a>
+  </li>
+</ul>
     </div>
+
   </div>
 </section>
 
