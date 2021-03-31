@@ -6,7 +6,7 @@ RSpec.describe FriendNotifierMailer, type: :mailer do
     sending_user = User.create!(username: "fakefriend", email: "fakefriend@email.com", password: "password")
     friend = User.create!(email: "friend1@email.com", username: "friend1", password: "password")
     movie = Movie.create!(title: "Forest Gump", duration: 142, api_id: 101)
-    party = movie.parties.create!(movie_id: 1, duration: 120, host_id: sending_user.id, party_date: Date.today, party_time: Time.now)
+    party = movie.parties.create!(movie_id: movie.id, duration: 120, host_id: sending_user.id, party_date: Date.today, party_time: Time.now)
 
     email_info = {
       user: sending_user,
