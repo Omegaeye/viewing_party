@@ -42,8 +42,8 @@
   <div class="row flex-row flex-nowrap">
     <% if @movie.cast %>
       <% @movie.cast.each do |member| %>
-      <div class="col-3">
-        <div class="card" style="width:auto;">
+      <div class="col-auto">
+        <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=member[:profile_path]%>" alt="<%= member[:name] %>">
           <div class="card-body">
             <h5 class="card-title"><%= member[:name] %></h5>

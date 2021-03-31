@@ -5,6 +5,7 @@ describe "Movie Index Page" do
     before :each do
       VCR.use_cassette("top_rated_movies") do
         visit discover_path
+        
         within ".rated" do
           expect(page).to have_button("Find Top Rated Movies")
           click_button
