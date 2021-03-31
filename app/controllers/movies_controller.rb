@@ -1,19 +1,14 @@
 class MoviesController < ApplicationController
   def index
     @movies = if params[:top_rated]
-                MovieService.top_rated_movies.map do |data|
-                  MovieApi.new(data)
-                end
+                MoviesFacade.search_top_rated_movies
               else
-                MovieService.movies_by_title(params[:movie_title]).map do |data|
-                  MovieApi.new(data)
-                end
+                MoviesFacade.search_movies_by_title(params[:movie_title])
               end
   end
 
   def show
-    data = MovieService.movie_by_id(params[:id])
-    @movie = MovieApi.new(data)
+    @movie = MoviesFacade.get_movie_details(params[:id])
     session[:movie] = { api_id: @movie.id,
                         title: @movie.title,
                         duration: @movie.duration,

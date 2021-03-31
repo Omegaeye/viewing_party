@@ -3,8 +3,9 @@ require 'rails_helper'
 describe 'Viewing Party New Page' do
   before :each do
     VCR.use_cassette("new_viewing_party_page") do
+      Movie.destroy_all
       data = MovieService.movie_by_id(24428)
-      @movie = MovieApi.new(data)
+      @movie = Film.new(data)
       @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
       @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
       @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
@@ -53,6 +54,12 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@nofive.id}").set(true)
       click_button("Create Party")
 
+      expect(ActionMailer::Base.deliveries.count).to eq(2)
+      email = ActionMailer::Base.deliveries.last
+
+      expect(email.subject).to eq('The Avengers Viewing Party Invite')
+      expect(email.reply_to).to eq(["#{@highfive.email}"])
+
       expect(current_path).to eq(dashboard_path)
       within('#watch_parties') do
         expect(page).to have_content("The Avengers Party")
@@ -74,6 +81,8 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@sidefive.id}").set(false)
       find(:css, "#friends_#{@nofive.id}").set(false)
       click_button("Create Party")
+
+      expect(ActionMailer::Base.deliveries.count).to eq(0)
 
       expect(current_path).to eq(dashboard_path)
       within('#watch_parties') do

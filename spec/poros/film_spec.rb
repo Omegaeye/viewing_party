@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe MovieApi do
+RSpec.describe Film do
   it "exists" do
     attrs = {
       id: 1,
@@ -12,9 +12,10 @@ RSpec.describe MovieApi do
       poster_path: "poster path"
     }
 
-    movie = MovieApi.new(attrs)
+    movie = Film.new(attrs)
 
-    expect(movie).to be_a MovieApi
+    expect(movie).to be_a Film
+    expect(movie.vote_average).to eq(8.5)
     expect(movie.id).to eq(attrs[:id])
     expect(movie.title).to eq(attrs[:title])
     expect(movie.vote_average).to eq(attrs[:vote_average])
