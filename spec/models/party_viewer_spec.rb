@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PartyViewer, type: :model do
   before :each do
+    Movie.destroy_all
     @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
     @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
     @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
