@@ -81,17 +81,16 @@ describe "Dashboard Page" do
         end
       end
 
-      it "A viewing parties section" do
-        expect(page).to have_content("Watch Parties:")
-        expect(page).to have_content("Invited:")
-        page.all('div.col-3 parties_for_you').each do |div|
-          expect(page).to have_content("Daybreak Party")
-          expect(div).to have_content("Duration: 3 hours 15 minutes")
-          expect(div).to have_content("Hosted by: #{@user_2.username}")
-          expect(div).to have_content("Invitees: sphinx")
-          expect(div).to have_content("Date:")
-          expect(div).to have_content("Time:")
-        end
+    it "A viewing parties section" do
+      expect(page).to have_content("Watch Parties:")
+      expect(page).to have_content("Invited:")
+      page.all('div.col-3 parties_for_you').each do |div|
+        expect(div).to have_content("Duration: 3 hours 15 minutes")
+        expect(div).to have_content("Hosted by: #{@user_2.username}")
+        expect(div).to have_content("Invitees: sphinx")
+        expect(div).to have_content("Date:")
+        expect(div).to have_content("Time:")
+      end
 
         expect(page).to have_content("Hosting:")
         page.all('div.col-3 parties_you_run').each do |div|
