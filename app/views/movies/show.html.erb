@@ -33,7 +33,7 @@
 </section>
 
 <div class="viewing-party">
-  <%= button_to 'Create Viewing Party for Movie', movies_path, method: :post, params: {title: @movie.title, duration: @movie.duration, poster_path: @movie.poster_path, api_id: @movie.id}, local: true %>
+  <%= button_to 'Create Viewing Party for Movie', new_viewing_party_path, method: :get, local: true %>
 </div>
 
 <h3 class="white_glow"><center>Cast:<center></h3>
@@ -41,8 +41,8 @@
   <div class="row flex-row flex-nowrap">
     <% if @movie.cast %>
       <% @movie.cast.each do |member| %>
-      <div class="col-3">
-        <div class="card" style="width:auto;">
+      <div class="col-auto">
+        <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=member.profile_path%>" alt="<%= member.name %>">
           <div class="card-body">
             <h5 class="card-title"><%= member.name %></h5>

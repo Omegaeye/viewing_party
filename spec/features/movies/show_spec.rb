@@ -1,23 +1,25 @@
 require 'rails_helper'
 
-describe 'As an authenticated user' do
-  before :each do
-    data = MovieService.movie_by_id(24428)
-    @movie = Film.new(data)
-    @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
-    @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
-    @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
-    @nofive = User.create!(username: "nofive", email: "nofive@fake.com", password: "password", id: 103)
-    @movie1 = Movie.create!(title: "The Mummy", duration: 120, api_id: 90, id: 1)
-    Friendship.create!(user: @highfive, friend: @lowfive, status: 0)
-    Friendship.create!(user: @highfive, friend: @sidefive, status: 0)
-    Friendship.create!(user: @highfive, friend: @nofive, status: 0)
+describe "Movie Show Page" do
+  describe 'As an authenticated user' do
+    before :each do
+      VCR.use_cassette("show-movie") do
+        data = MovieService.movie_by_id(24428)
+        @movie = MovieApi.new(data)
+        @highfive = User.create!(username: "highfive", email: "highfive@fake.com", password: "password", id: 100)
+        @lowfive = User.create!(username: "lowfive", email: "lowfive@fake.com", password: "password", id: 101)
+        @sidefive = User.create!(username: "sidefive", email: "sidefive@fake.com", password: "password", id: 102)
+        @nofive = User.create!(username: "nofive", email: "nofive@fake.com", password: "password", id: 103)
+        @movie1 = Movie.create!(title: "The Mummy", duration: 120, api_id: 90, id: 1)
+        Friendship.create!(user: @highfive, friend: @lowfive, status: 0)
+        Friendship.create!(user: @highfive, friend: @sidefive, status: 0)
+        Friendship.create!(user: @highfive, friend: @nofive, status: 0)
 
-    visit root_path
+        visit root_path
 
-    fill_in :username, with: "highfive"
-    fill_in :password, with: "password"
-    click_button "Log In"
+        fill_in :username, with: "highfive"
+        fill_in :password, with: "password"
+        click_button "Log In"
 
     visit movie_path(@movie.id)
   end

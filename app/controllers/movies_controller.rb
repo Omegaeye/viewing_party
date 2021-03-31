@@ -9,6 +9,10 @@ class MoviesController < ApplicationController
 
   def show
     @movie = MoviesFacade.get_movie_details(params[:id])
+    session[:movie] = { api_id: @movie.id,
+                        title: @movie.title,
+                        duration: @movie.duration,
+                        poster_path: @movie.poster_path }
   end
 
   def create

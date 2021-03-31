@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=NON-EXPOSED-API&query=sdfsdfsdfdhfyh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '57'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 30 Mar 2021 18:54:14 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Etag:
+      - a8d277d2d95f2ea20f792a48c43093dc
+      Cache-Control:
+      - public, max-age=600
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 74a7ab693cbc57816008833fe2c7b1fb.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DFW53-C1
+      X-Amz-Cf-Id:
+      - C6u41qZjMtxHkB2rV1G_IGLB4bCQF57o4rSdhszhRK6Vg6F4xPNfVA==
+      Age:
+      - '226'
+    body:
+      encoding: UTF-8
+      string: '{"page":1,"results":[],"total_pages":0,"total_results":0}'
+  recorded_at: Tue, 30 Mar 2021 18:58:00 GMT
+recorded_with: VCR 6.0.0
