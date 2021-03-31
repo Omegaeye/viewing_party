@@ -25,6 +25,7 @@ class PartiesController < ApplicationController
       friend = User.find_by(id: viewer_id)
       send_email(friend, party)
     end
+    session.delete(:movie)
   end
 
   def send_email(friend, party)
