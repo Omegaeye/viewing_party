@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
   end
 
   private
+
   def movie_params
     params.permit(:title, :duration, :api_id, :poster_path)
   end
