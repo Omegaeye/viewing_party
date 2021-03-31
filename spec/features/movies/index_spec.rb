@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "Movie Index Page" do
   describe 'As an authenticated user' do
     before :each do
+      Movie.destroy_all
       VCR.use_cassette("top_rated_movies") do
         visit discover_path
 

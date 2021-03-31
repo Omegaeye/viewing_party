@@ -8,8 +8,7 @@ class PartiesController < ApplicationController
     @movie = Movie.find_or_create_by(session[:movie])
     party = @movie.parties.create(party_params)
     if party.save
-      @pv = PartyViewer.create_multiple_viewers(params[:friends], party.id)
-      viewing_party_flash
+      create_party_viewers(params[:friends], party)
       flash[:success] = 'Party Created'
       redirect_to dashboard_path
     else
@@ -18,13 +17,28 @@ class PartiesController < ApplicationController
     end
   end
 
-  def viewing_party_flash
-    if @pv
-      flash[:success] = 'Party Viewer Created'
-    else
-      flash[:error] = @pv.errors.full_messages.to_sentence
-      render :new
+  def create_party_viewers(ids, party)
+    return '' if ids.nil?
+
+    ids.all? do |viewer_id|
+      PartyViewer.create!(party_id: party.id, viewer_id: viewer_id)
+      friend = User.find_by(id: viewer_id)
+      send_email(friend, party)
     end
+  end
+
+  def send_email(friend, party)
+    recipient = friend.email
+    movie = Movie.find_by(id: party.movie_id)
+
+    email_info = {
+      user: current_user,
+      friend: friend.username,
+      party_info: party,
+      movie: movie
+    }
+
+    FriendNotifierMailer.inform(email_info, recipient).deliver_now
   end
 
   private

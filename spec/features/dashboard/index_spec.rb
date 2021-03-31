@@ -3,6 +3,7 @@ describe "Dashboard Page" do
   describe 'As an authenticated user' do
     describe 'when I visit "/dashboard" I see' do
       before :each do
+        Movie.destroy_all
         @user = User.create!(username: "sphinx", email: "123fake@email.com", password: "password")
         @user_2 = User.create!(
           email: "friendboy@email.com",
