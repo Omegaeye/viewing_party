@@ -6,12 +6,12 @@
   </div>
   <ul class="list-group list-group-flush">
      <li class="list-group-item">Movie:
-       <a class="dark_glow"><%= "#{party.movie.title}" %></a>
+       <a class="dark_glow"><%= link_to "#{party.movie.title}", "/movies/#{party.movie.api_id}" %></a>
      </li>
      <li class="list-group-item"><%= "Duration: #{party.duration/60} hours " + "#{party.duration%60} minutes" %></li>
      <li class="list-group-item"><%= "Date: #{party.party_date.strftime("%e %b %Y")}" %></li>
      <li class="list-group-item"><%= "Time: #{party.party_time.strftime("%l:%M %p %Z")}" %></li>
      <li class="list-group-item"><%= "Hosted by: #{party.host.username}" %></li>
      <li class="list-group-item"><%= "Invitees: #{party.viewer_usernames}" %></li>
-   </ul>
+  </ul>
 </div>

@@ -55,14 +55,24 @@
   </div>
 </div>
 
-<section class= 'reviews'>
-<h3><%= @movie.reviews.count %> Review(s)</h3>
-<% if @movie.reviews %>
-  <% @movie.reviews.each do |review| %>
-    <section>
-      <h4>Author: <%= review.author %></h4>
-      <p>Review: <%= review.content %></p>
-    </section>
-  <% end %>
-<% end %>
-</section>
+
+
+<div class="container">
+  <div class="row">
+    <section class='reviews'>
+    <h3><%= @movie.reviews.count %> Review(s)</h3>
+    <% if @movie.reviews %>
+      <% @movie.reviews.each do |review| %>
+        <div class="col">
+          <div class="card" style="width: auto;">
+            <div class="card-body">
+                <h5 class="card-title"><%= review.author %></h5>
+                <p class="card-text"><%= review.content %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+  </div>
+</div>
