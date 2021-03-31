@@ -21,7 +21,6 @@ describe "Movie Show Page" do
         fill_in :username, with: "highfive"
         fill_in :password, with: "password"
         click_button "Log In"
-
         visit movie_path(@movie.id)
       end
     end
