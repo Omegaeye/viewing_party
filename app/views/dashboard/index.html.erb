@@ -1,20 +1,32 @@
-<%= button_to "Discover Movies", discover_path, method: :get%>
 
 <section>
-  <header><center>Friends:</center></header>
-  <div id="add_friend">
-    <h3>Add a friend: </h3>
-    <%= form_with url: friendships_path, local: true do |f| %>
-      <%= f.label :friend, "Search by email:" %>
-      <%= f.text_field :friend %>
-      <%= f.submit "Add Friend" %>
-    <% end %>
-  </div>
-    <% if current_user.friendships.none? %>
+  <header>
+    <center>Welcome, <%= current_user.username %>!</center>
+  </header>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a href="/discover" id="discover"><button class="btn btn-outline-info">Discover Movies</button></a>
+
+  <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Friends Menu</button>
+</div>
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Friends List:</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="add_friend">
+        <h3>Add a friend: </h3>
+        <%= form_with url: friendships_path, local: true do |f| %>
+        <%= f.label :friend, "Search by email:" %>
+        <%= f.text_field :friend %>
+        <%= f.submit "Add Friend", class: "btn btn-outline-info" %>
+        <% end %>
+      </div>
+      <% if current_user.friendships.none? %>
       <p>You currently have no friends.</p>
-    <% else %>
+      <% else %>
       <% current_user.friendships.each do |friendship| %>
-      <ol class="list-group list-group-numbered">
+      <ol class="list-group list-group">
         <li class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 me-auto">
             <div id="friends_list">
@@ -28,33 +40,30 @@
         </li>
       </ol>
       <% end %>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
 </section>
 
-<header><center>Watch Parties:</center></header>
 <section id="watch_parties">
-  <div>
-      <h2 class="blue_glow"><center>Invited:</center></h2>
-      <div style="overflow:auto">
-        <div class="row flex-row flex-nowrap">
-          <div class="col-3 parties_for_you">
-            <% @parties[:invited_to].each do |party| %>
-              <%= render partial: "party_information", locals: {party: party} %>
-          </div>
-          <% end %>
-        </div>
+  <h2 class="blue_glow"><center>Party Invited:</center></h2>
+  <div style="overflow:auto">
+    <div class="row flex-row flex-nowrap">
+      <div class="col-3 parties_for_you">
+        <% @parties[:invited_to].each do |party| %>
+          <%= render partial: "party_information", locals: {party: party} %>
       </div>
-    </div>
-  <div >
-    <h2 class="blue_glow"><center>Hosting:</center></h2>
-    <div style="overflow:auto">
-      <div class="row flex-row flex-nowrap">
-        <div class="col-3 parties_you_run">
-          <% @parties[:hosted].each do |party| %>
-            <%= render partial: "party_information", locals: {party: party} %>
-        </div>
         <% end %>
+    </div>
+  </div>
+  <h2 class="blue_glow"><center>Party Hosting:</center></h2>
+  <div style="overflow:auto">
+    <div class="row flex-row flex-nowrap">
+      <div class="col-3 parties_you_run">
+        <% @parties[:hosted].each do |party| %>
+          <%= render partial: "party_information", locals: {party: party} %>
       </div>
+        <% end %>
     </div>
   </div>
 </section>

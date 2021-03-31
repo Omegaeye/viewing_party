@@ -45,14 +45,14 @@ describe "Dashboard Page" do
 
       it "A button to Discover Movies" do
         expect(page).to have_button("Discover Movies")
-        click_button("Discover Movies")
-
+        find("#discover").click
         expect(current_path).to eq(discover_path)
       end
 
       describe "friends section" do
         it "tells me I have no friends" do
-          expect(page).to have_content("Friends:")
+          expect(page).to have_button("Friends Menu")
+          click_button("Friends Menu")
           expect(page).to have_content("You currently have no friends.")
         end
 
@@ -81,8 +81,7 @@ describe "Dashboard Page" do
       end
 
       it "A viewing parties section" do
-        expect(page).to have_content("Watch Parties:")
-        expect(page).to have_content("Invited:")
+        expect(page).to have_content("Party Invited:")
         page.all('div.col-3 parties_for_you').each do |div|
           expect(page).to have_content("Daybreak Party")
           expect(div).to have_content("Duration: 3 hours 15 minutes")
