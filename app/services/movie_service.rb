@@ -21,6 +21,7 @@ class MovieService
   def self.cast(movie_id)
     response = conn.get("movie/#{movie_id}/credits")
     JSON.parse(response.body, symbolize_names: true)
+    # combine this and reviews
   end
 
   def self.reviews(movie_id)

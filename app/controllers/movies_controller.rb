@@ -5,10 +5,9 @@ class MoviesController < ApplicationController
                   Film.new(data)
                 end
               else
-                MovieService.movies_by_title(params[:movie_title]).map do |data|
-                  Film.new(data)
-                end
+                MoviesFacade.search_movies_by_title(params[:movie_title])
               end
+              # change these to use movies facade
   end
 
   def show
