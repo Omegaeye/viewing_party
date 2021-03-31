@@ -18,12 +18,14 @@ class Film
   end
 
   def cast
-    @cast ||= MovieService.cast(@id)[:cast][0..10]
+    @cast ||= MovieService.cast(@id)[:cast].first(10).map do |member|
+      CastMember.new(member)
+    end
   end
 
   def reviews
-    @reviews ||= MovieService.reviews(@id)[:results].each_with_object({}) do |review, hash|
-      hash[review[:content]] = review[:author_details]
+    @reviews ||= MovieService.reviews(@id)[:results].map do |movie_review|
+      Review.new(movie_review)
     end
   end
 end

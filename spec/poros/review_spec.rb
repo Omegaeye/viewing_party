@@ -21,8 +21,4 @@ describe Review, type: :class do
       expect(love_it.rating).to be_an Integer
     end
   end
-
-  describe 'instance methods' do
-    # more to come
-  end
 end

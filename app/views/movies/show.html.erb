@@ -1,4 +1,3 @@
-
 <section class="movie_show_data container-fluid">
   <div class="row">
     <div class="col">
@@ -44,10 +43,10 @@
       <% @movie.cast.each do |member| %>
       <div class="col-3">
         <div class="card" style="width:auto;">
-          <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=member[:profile_path]%>" alt="<%= member[:name] %>">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w200<%=member.profile_path%>" alt="<%= member.name %>">
           <div class="card-body">
-            <h5 class="card-title"><%= member[:name] %></h5>
-            <p class="card-text"><%= member[:character] %></p>
+            <h5 class="card-title"><%= member.name %></h5>
+            <p class="card-text"><%= member.character %></p>
           </div>
         </div>
       </div>
@@ -61,8 +60,9 @@
 <% if @movie.reviews %>
   <% @movie.reviews.each do |review| %>
     <section>
-      <h4>Author: <%= review[1][:username] %></h4>
-      <p><%= review[0] %></p>
+      <h4>Author: <%= review.author %></h4>
+      <p>Rating: <%= review.rating %> stars</p>
+      <p>Review: <%= review.content %></p>
     </section>
   <% end %>
 <% end %>

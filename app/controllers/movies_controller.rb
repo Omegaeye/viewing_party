@@ -12,10 +12,8 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    data = MovieService.movie_by_id(params[:id])
+    data = MoviesFacade.get_movie_details(params[:id])
     @movie = Film.new(data)
-    @dbmovie = Movie.new
   end
 
   def create
@@ -30,7 +28,6 @@ class MoviesController < ApplicationController
   end
 
   private
-
   def movie_params
     params.permit(:title, :duration, :api_id, :poster_path)
   end
