@@ -1,3 +1,6 @@
 Hello <%=@friend%>!
 
-<%= @user.username %> has requested to be your friend on Viewing Party.
+<%= @user.username %> has sent you an invite to <%= @movie.title %> Viewing Party.
+<p>Date: <%= @party.party_date.strftime("%e %b %Y")%></p>
+<p>Time: <%= @party.party_time.strftime("%l:%M %p %Z")%></p>
+<p>Duration: <%= @party.duration/60 %> hours <%= @party.duration%60 %> minutes</p>

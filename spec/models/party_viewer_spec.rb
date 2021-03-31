@@ -19,11 +19,4 @@ RSpec.describe PartyViewer, type: :model do
     it { should belong_to :party }
     it { should belong_to(:viewer).class_name('User') }
   end
-
-  describe "methods" do
-    it "can create_multiple_viewers" do
-      ids = [@lowfive.id, @sidefive.id, @nofive.id]
-      expect(PartyViewer.create_multiple_viewers(ids, @party1.id)).to eq(true)
-    end
-  end
 end

@@ -53,6 +53,12 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@nofive.id}").set(true)
       click_button("Create Party")
 
+      expect(ActionMailer::Base.deliveries.count).to eq(2)
+      email = ActionMailer::Base.deliveries.last
+
+      expect(email.subject).to eq('The Avengers Viewing Party Invite')
+      expect(email.reply_to).to eq(["#{@highfive.email}"])
+
       expect(current_path).to eq(dashboard_path)
       within('#watch_parties') do
         expect(page).to have_content("The Avengers Party")
@@ -74,6 +80,8 @@ describe 'Viewing Party New Page' do
       find(:css, "#friends_#{@sidefive.id}").set(false)
       find(:css, "#friends_#{@nofive.id}").set(false)
       click_button("Create Party")
+
+      expect(ActionMailer::Base.deliveries.count).to eq(0)
 
       expect(current_path).to eq(dashboard_path)
       within('#watch_parties') do
