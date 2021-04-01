@@ -5,6 +5,8 @@ class Party < ApplicationRecord
 
   validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
+  validates :party_date, presence: true
+
   before_save :convert_date
 
   def viewer_usernames
@@ -17,6 +19,15 @@ class Party < ApplicationRecord
     else
       usernames.join(', ')
     end
+  end
+
+  def self.date_check_then_create(data)
+    if data[:party_date] == '' || data[:party_date].to_date < Date.tomorrow
+      data[:party_date] = ''
+    else
+      data[:party_date]
+    end
+    create(data)
   end
 
   private
