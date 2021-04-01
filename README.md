@@ -4,9 +4,9 @@ Viewing party is a way for user to log in and search movies through themoviedb.c
 
 ## Authors
 
-- **Jenny Branham** - github - https://github.com/jbranham
-- **Hope McGee** - github - https://github.com/hopesgit
-- **Khoa Nguyen** - github - https://github.com/Omegaeye
+- **Jenny Branham** - [GitHub](https://github.com/jbranham)
+- **Hope McGee** - [GitHub](https://github.com/hopesgit) / [LinkedIn](https://www.linkedin.com/in/hope-mcgee/)
+- **Khoa Nguyen** - [GitHub](https://github.com/Omegaeye)
 
 ### Links
   * https://github.com/Omegaeye/viewing_party
