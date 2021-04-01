@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     @movies = if params[:top_rated]
                 MoviesFacade.search_top_rated_movies
               elsif params[:movie_title] == ''
-                flash[:error] = "Please type in a movie"
+                flash[:error] = 'Please type in a movie'
                 render :index
               else
                 MoviesFacade.search_movies_by_title(params[:movie_title])
