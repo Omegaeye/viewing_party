@@ -47,7 +47,7 @@ describe 'Viewing Party New Page' do
     it "I can fill out party form" do
 
       fill_in :duration, with: 160
-      fill_in :party_date, with: Date.today
+      fill_in :party_date, with: Date.tomorrow
       fill_in :party_time, with: Time.now
       find(:css, "#friends_#{@lowfive.id}").set(true)
       find(:css, "#friends_#{@sidefive.id}").set(false)
@@ -75,7 +75,7 @@ describe 'Viewing Party New Page' do
 
     it "I can create a party without friends" do
       fill_in :duration, with: 160
-      fill_in :party_date, with: Date.today
+      fill_in :party_date, with: Date.tomorrow
       fill_in :party_time, with: Time.now
       find(:css, "#friends_#{@lowfive.id}").set(false)
       find(:css, "#friends_#{@sidefive.id}").set(false)
@@ -101,6 +101,17 @@ describe 'Viewing Party New Page' do
       fill_in :duration, with: ''
       fill_in :party_date, with: ''
       fill_in :party_time, with: ''
+      find(:css, "#friends_#{@lowfive.id}").set(false)
+      find(:css, "#friends_#{@sidefive.id}").set(false)
+      find(:css, "#friends_#{@nofive.id}").set(false)
+      click_button("Create Party")
+      expect(page).to have_content("Party can't be created, you're missing some information.")
+    end
+
+    it "I can't create a party date before tomorrow" do
+      fill_in :duration, with: 120
+      fill_in :party_date, with: Date.today
+      fill_in :party_time, with: Time.now
       find(:css, "#friends_#{@lowfive.id}").set(false)
       find(:css, "#friends_#{@sidefive.id}").set(false)
       find(:css, "#friends_#{@nofive.id}").set(false)

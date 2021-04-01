@@ -6,7 +6,8 @@ class PartiesController < ApplicationController
 
   def create
     @movie = Movie.find_or_create_by(session[:movie])
-    party = @movie.parties.create(party_params)
+
+    party = @movie.parties.date_check_then_create(party_params)
     if party.save
       create_party_viewers(params[:friends], party)
       flash[:success] = 'Party Created'
