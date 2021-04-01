@@ -79,7 +79,18 @@ describe "Dashboard Page" do
           end
           expect(page).to have_content('Invalid Email')
         end
+
+        it "gives me an error when fill nothing in" do
+          within('div#add_friend') do
+            expect(page).to have_content("Add a friend:")
+            expect(page).to have_content("Search by email:")
+            fill_in(:friend, with: '')
+            click_button("Add Friend")
+          end
+          expect(page).to have_content('Invalid Email')
+        end
       end
+
 
     it "A viewing parties section" do
       expect(page).to have_content("Party Invited:")
@@ -89,6 +100,13 @@ describe "Dashboard Page" do
         expect(div).to have_content("Invitees: sphinx")
         expect(div).to have_content("Date:")
         expect(div).to have_content("Time:")
+      end
+
+      expect(page).to have_content("Party Invited:")
+      page.all('div.col-3 parties_for_you').each do |div|
+        expect(div).to have_link(@movie.title)
+        click_link(@movie.title)
+        expect(current_path).to eq(movie_path(@movie))
       end
 
         expect(page).to have_content("Party Hosting:")

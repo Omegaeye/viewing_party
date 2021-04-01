@@ -2,8 +2,8 @@
 <header>
   <center>Movies:</center>
 </header>
-<% if @movies.empty? %>
-  No movies within your search results.
+<% if !@movies %>
+
 <% else %>
 <div style="overflow:auto">
   <div class="row flex-row flex-nowrap">

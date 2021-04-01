@@ -31,6 +31,16 @@ describe "Discover Page" do
             end
           end
         end
+
+        it "I can see a text field to search", :vcr do
+          within ".title" do
+            expect(page).to have_field(:movie_title)
+            fill_in :movie_title, with: ''
+            expect(page).to have_button("Find Movies")
+            click_button
+            expect(current_path).to eq(movies_path)
+          end
+        end
       end
     end
   end

@@ -60,7 +60,18 @@ describe "Movie Index Page" do
               click_button
             end
             expect(current_path).to eq(movies_path)
-            expect(page).to have_content("No movies within your search results.")
+          end
+        end
+
+        it "I can see a text field to search by movie title with a button" do
+          VCR.use_cassette("no-movies-returned") do
+            within ".title" do
+              expect(page).to have_field(:movie_title)
+              expect(page).to have_button("Find Movies")
+              fill_in :movie_title, with: ''
+              click_button
+            end
+            expect(current_path).to eq(movies_path)
           end
         end
       end
